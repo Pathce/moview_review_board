@@ -1,0 +1,21 @@
+#login {
+    text-align: right;
+}
+
+#login > button {
+    border: none;
+    backgroud-color: #ffffff;
+    padding: 5px;
+}
+
+#movie_poster_list {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#movie_poster_list img{
+    resize: both;
+    max-width: 150px;
+    height: auto;
+    margin: 5px 0;
+}
