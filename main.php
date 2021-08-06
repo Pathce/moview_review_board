@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>메인</title>
     <link rel="stylesheet" href="./css/main.css" />
 </head>
 <body>
@@ -31,18 +31,18 @@
         </table>
     </div>
     <div class="review_container">
-        <ul class="review_tabs">
-            <li><button id="tab01">인기</button></li>
-            <li><button id="tab02">전체</button></li>
+        <div class="review_tabs">
+            <button id="tab01">인기</button>
+            <button id="tab02">전체</button>
             <select id="search_certria">
                 <option>제목</option>
                 <option>영화</option>
             </select>
             <input />
             <button id="search_btn">검색</button>
-        </ul>
+        </div>
         <div class="tab_content">
-            <div id="tab-1">인기
+            <div class="tab-1 ">인기
                 <table class="review_list pop">
                     <thead>
                         <td>글 번호</td>
@@ -64,7 +64,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="hidden" id="tab-2">
+            <div class="tab-2 hidden">
                 전체
                 <table class="review_list">
                     <thead>

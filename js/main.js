@@ -3,12 +3,12 @@ const reviewTabs = reviewContainer.querySelector('.review_tabs');
 const tabContent = reviewContainer.querySelector('.tab_content');
 const tab01 = reviewTabs.querySelector('#tab01');
 const tab02 = reviewTabs.querySelector('#tab02');
-const tabContent01 = tabContent.querySelector('#tab-1');
-const tabContent02 = tabContent.querySelector('#tab-2');
+const tabContent01 = tabContent.querySelector('.tab-1');
+const tabContent02 = tabContent.querySelector('.tab-2');
 
 const HIDDEN_CLASSNAME = "hidden";
 
-chk = 1;
+let chk = 1;
 
 function onClickTab1(event) {
     console.log("Clicked 01");
