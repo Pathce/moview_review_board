@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>내 정보</title>
-    <link rel="stylesheet" href="./css/userInfo.css" />
+    <link rel="stylesheet" type="text/css" href="./css/userInfo.css" />
 </head>
 <body>
     <div>

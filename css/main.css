@@ -1,25 +1,162 @@
+@charset "utf-8";
+
+
+/* 전체 옵션 */
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Malgun gothic', 'Sans-Serif', 'Arial';
+    /*box-sizing: border-box;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+}
+
+/* 공통 옵션 */
 .hidden {
     display: none;
 }
-
-#login {
-    text-align: right;
+.boundary{
+    width: 100%;
+    height: 50px;
 }
 
-#login > button {
+/* 로그인, 로그아웃, 회원가입 */
+.login {
+    position: relative;
+    text-align: right;
+    height: 50px;
+}
+.login_btn {
+    position: absolute;
+    top: 25%;
+    right: 0%;
+}
+.login_btn > button {
     border: none;
     backgroud-color: #ffffff;
     padding: 5px;
 }
 
+/* 영화 포스터 목록 */
 #movie_poster_list {
     margin-left: auto;
     margin-right: auto;
+    padding: 20px;
+    border: ridge;
+    border-radius: 10px;
 }
-
 #movie_poster_list img{
     resize: both;
     max-width: 150px;
     height: auto;
     margin: 5px 0;
+}
+
+/* 리뷰 목록 */
+.review_container {
+    margin: 50px auto;
+    width: 1470px;
+    position: relative;
+}
+.tab_content {
+    position: relative;
+    text-align: center;
+}
+.review_list {
+    margin-top: 28px
+}
+.review_list thead th {
+    height: 40px;
+    border-top: 2px solid #09C;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    font-size: 17px;
+}
+.review_list tbody td {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #CCC;
+    height: 20px;
+    font-size: 14px;
+}
+/* 리뷰 탭 */
+.clicked {
+    width: 140px;
+    height: 50px;
+    border: 2px solid #34495e;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 0px 0px;
+}
+.clicked a{
+    font-family: arial;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 50px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+}
+.eff-1{
+    width: 140px;
+    height: 50px;
+    border: 70px solid #34495e;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    box-sizing: border-box;
+}
+.clicked:hover .eff-1{
+    border: 0px solid #34495e;
+}
+.clicked:hover a{
+    color: #34495e;
+}
+.non_clicked {
+    width: 140px;
+    height: 50px;
+    border: 2px solid #34495e;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 0 0px 0px;
+}
+.non_clicked a {
+    font-family: arial;
+    font-size: 16px;
+    color: #34495e;
+    text-decoration: none;
+    line-height: 50px;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+}
+.eff-2 {
+    width: 140px;
+    height :50px;
+    border: 0px solid #34495e;
+    position: absolute;
+    transition: all .5s ease;
+    z-index: 1;
+    box-sizing: border-box;
+}
+.non_clicked:hover .eff-2{
+    border: 70px solid #34495e;
+}
+.non_clicked:hover a{
+    color: #fff;
+}
+
+/* 통계 목록 */
+.chart {
+    width: 1000px;
+    position: relative;
 }
