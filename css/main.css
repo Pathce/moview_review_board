@@ -26,15 +26,10 @@
     text-align: right;
     height: 50px;
 }
-.login_btn {
+.login_info {
     position: absolute;
     top: 25%;
-    right: 0%;
-}
-.login_btn > button {
-    border: none;
-    backgroud-color: #ffffff;
-    padding: 5px;
+    right: 2%;
 }
 
 /* 영화 포스터 목록 */
@@ -98,7 +93,7 @@
     color: #fff;
     text-decoration: none;
     line-height: 50px;
-    transition: all .5s ease;
+    transition: all .2s ease;
     z-index: 2;
     position: relative;
 }
@@ -107,7 +102,7 @@
     height: 50px;
     border: 70px solid #34495e;
     position: absolute;
-    transition: all .5s ease;
+    transition: all .2s ease;
     z-index: 1;
     box-sizing: border-box;
 }
@@ -135,7 +130,7 @@
     color: #34495e;
     text-decoration: none;
     line-height: 50px;
-    transition: all .5s ease;
+    transition: all .2s ease;
     z-index: 2;
     position: relative;
 }
@@ -144,7 +139,7 @@
     height :50px;
     border: 0px solid #34495e;
     position: absolute;
-    transition: all .5s ease;
+    transition: all .2s ease;
     z-index: 1;
     box-sizing: border-box;
 }
