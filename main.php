@@ -60,7 +60,7 @@
                 <option>영화</option>
             </select>
             <input />
-            <a href="./review.php"><button id="search_btn">검색</button></a>
+            <a href="review_write.php"><button id="search_btn">검색</button></a>
         </div>
         <div class="tab_content">
             <div class="tab-1 ">
@@ -91,7 +91,7 @@
                             <td><?php echo $review['R_SEQ']; ?></td>
                             <td><?php echo $review['UR_ID'] ?></td>
                             <td><?php echo $review['M_SEQ'] ?></td>
-                            <td><?php echo $review['R_SUBJECT'] ?></td>
+                            <td><a href="./review.php?r_seq=<?php echo $review['R_SEQ']; ?>"><?php echo $review['R_SUBJECT'] ?></a></td>
                             <td><?php echo $review['R_SCORE'] ?></td>
                             <td><?php echo $review['R_REC'] ?></td>
                             <td><?php echo '0' ?></td>

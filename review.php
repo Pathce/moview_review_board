@@ -1,44 +1,63 @@
+<?php include $_SERVER['DOCUMENT_ROOT']."./db.php"; ?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>내 정보</title>
-    <link rel="stylesheet" type="text/css" href="./css/review.css" />
+    <title>영화 리뷰</title>
+    <link rel="stylesheet" type="text/css" href="./css/review.css"
 </head>
 <body>
     <?php
-    session_start();
-    if (!isset($_SESSION['user_id'])) {
-        echo "<script>alert('로그인 후 이용 가능합니다.');";
-        echo "window.location.replace('index.php');</script>";
-    }
+        $r_seq = $_GET['r_seq'];
+        $cur_seq = (int)$r_seq;
+        $r_sql = query("SELECT * FROM review WHERE R_SEQ='".$r_seq."'");
+        $review = $r_sql->fetch_array();
+
+        $m_seq = $review['M_SEQ'];
+        $m_sql = query("SELECT M_NAME FROM movie_info WHERE M_SEQ='".$m_seq."'");
+        $movie = $m_sql->fetch_array();
+
+        $pre_seq = (string)($cur_seq - 1);
+        $next_seq = (string)($cur_seq + 1);
+        $pre_sql = query("SELECT * FROM review WHERE R_SEQ='".$pre_seq."'");
+        $pre_review = $pre_sql->fetch_array();
+        $next_sql = query("SELECT * FROM review WHERE R_SEQ='".$next_seq."'");
+        $next_review = $next_sql->fetch_array();
     ?>
-    <div class="review_write">
-        <h1><a href="./reviewBoard.php">리뷰 게시판</a></h1>
-        <h4>리뷰 쓰기</h4>
-        <div id="write_area">
-            <form action="write_ok.php" method="post">
-                <div id="in_title">
-                    <textarea name="title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required></textarea>
-                </div>
-                <div class="wi_line"></div>
-                <div id="in_name">
-                    <textarea name="movie_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" required></textarea>
-                </div>
-                <div class="wi_line"></div>
-                <div class="in_score">
-                    평점 들어갈 자리
-                </div>
-                <div class="wi_line"></div>
-                <div id="in_content">
-                    <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
-                </div>
-                <div class="btn_sub">
-                    <button type="submit">작성하기</button>
-                </div>
-            </form>
+    <div id="review_read">
+        <h2><?php echo $review['R_SUBJECT']; ?></h2>
+        <h3><?php echo $movie['M_NAME']; ?></h3>
+        <div id="score">
+            <?php echo $review['R_SCORE']; ?>
+        </div>
+        <div id="user_info">
+            <?php echo $review['UR_ID']; ?>
+            <?php echo $review['R_TIMESTAMP']; ?>
+        </div>
+        <div id="review_content">
+            <?php echo $review['R_CONTENT']; ?>
+        </div>
+        <div id="edit_review">
+            <button>수정하기</button>
+            <button>삭제하기</button>
+        </div>
+        <div id="pre_review">
+            이전 <a<?php
+                    if($pre_review) {
+                        echo " href='./review.php?r_seq=".$pre_review['R_SEQ']."'>".$pre_review['R_SUBJECT'];
+                    } else {
+                        echo ">"."게시물이 존재하지 않습니다.";
+                    }
+                ?></a>
+        </div>
+        <div id="next_review">
+            다음 <a<?php
+            if($next_review) {
+                echo " href='./review.php?r_seq=".$next_review['R_SEQ']."'>".$next_review['R_SUBJECT'];
+            } else {
+                echo ">"."게시물이 존재하지 않습니다.";
+            }
+            ?></a>
         </div>
     </div>
-    <script src="./js/review.js"></script>
 </body>
 </html>

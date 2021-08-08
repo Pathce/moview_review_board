@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/chkpw.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signin_ok.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/review_write.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review_write.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chkid.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chkid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/signin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -105,7 +104,7 @@
       <workItem from="1628334053179" duration="1908000" />
       <workItem from="1628339141259" duration="6425000" />
       <workItem from="1628381959965" duration="3182000" />
-      <workItem from="1628387368007" duration="18327000" />
+      <workItem from="1628387368007" duration="21422000" />
     </task>
     <servers />
   </component>
