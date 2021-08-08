@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/review_write.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review_write.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modify.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reviewBoard.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_board.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review_write.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +106,7 @@
       <workItem from="1628334053179" duration="1908000" />
       <workItem from="1628339141259" duration="6425000" />
       <workItem from="1628381959965" duration="3182000" />
-      <workItem from="1628387368007" duration="21422000" />
+      <workItem from="1628387368007" duration="24778000" />
     </task>
     <servers />
   </component>

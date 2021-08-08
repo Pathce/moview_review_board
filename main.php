@@ -17,7 +17,7 @@
                 } else {
                     $user_id = $_SESSION['user_id'];
                     $user_name = $_SESSION['user_name'];
-                    echo "<p><strong>$user_name</strong>($user_id)님 환영합니다.";
+                    echo "<p><a href='user_info.php?user_id=".$user_id."'><strong>$user_name</strong></a>($user_id)님 환영합니다.";
                     echo "<a href='logout.php'>로그아웃</a></p>";
                 }
                 ?>

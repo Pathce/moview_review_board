@@ -36,10 +36,20 @@
         <div id="review_content">
             <?php echo $review['R_CONTENT']; ?>
         </div>
-        <div id="edit_review">
-            <button>수정하기</button>
-            <button>삭제하기</button>
+        <div id="movie_rec">
+            <button id="btn_rec">⭐추천하기</button>
         </div>
+        <?php
+        session_start();
+        if($review['UR_ID'] == $_SESSION['user_id']) {
+            echo "<div id=".'edit_review'.">
+                    <a href='modify.php?r_seq=";
+            echo $review['R_SEQ']."'>";
+            echo "<button id='btn_modify'>수정하기</button></a>
+                    <a href='review_board.php'><button id='btn_remove'>삭제하기</button></a>
+                </div>";
+        }
+        ?>
         <div id="pre_review">
             이전 <a<?php
                     if($pre_review) {
