@@ -6,6 +6,13 @@
     <link rel="stylesheet" type="text/css" href="./css/review.css" />
 </head>
 <body>
+    <?php
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        echo "<script>alert('로그인 후 이용 가능합니다.');";
+        echo "window.location.replace('index.php');</script>";
+    }
+    ?>
     <div class="review_write">
         <h1><a href="./reviewBoard.php">리뷰 게시판</a></h1>
         <h4>리뷰 쓰기</h4>

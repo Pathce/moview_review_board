@@ -1,6 +1,6 @@
 const btn_chkid = document.querySelector('#btn_chkid');
 
-function chkid(){
+function chkid() {
     if (id = document.querySelector('#uid').value) {
         url = "chkid.php?userid=" + id;
         window.open(url, "chkid", "width=500, height=300");

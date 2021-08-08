@@ -6,18 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/signin.css" />
 </head>
 <body>
-    <?php
-        $id = $pw = $rpw = $name = $email = "";
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
-            $pw = $_POST['pw'];
-            $rpw = $_POST['rpw'];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-        }
-    ?>
-    <form method="post" name="signin_form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+    <form method="post" name="signin_form" action="signin_ok.php">
         <fieldset>
             <legend>Sign In</legend>
             <table>
@@ -29,10 +18,12 @@
                 <tr>
                     <th>PW</th>
                     <td> : <input type="password" name="pw" id="upw" required></td>
+                    <td id="pw_comment">(8자 이상 13자 이하)</td>
                 </tr>
                 <tr>
                     <th>PW 확인</th>
                     <td> : <input type="password" name="rpw" id="urpw" required></td>
+                    <td><input type="button" value="PW 확인" id="btn-chkpw" ></td>
                 </tr>
                 <tr>
                     <th>NAME</th>
@@ -40,20 +31,20 @@
                 </tr>
                 <tr>
                     <th>EMAIL</th>
-                    <td> : <input type="text" name="email" id="uemail" required></td>
+                    <td> :
+                        <input type="text" name="email" id="uemail_id" required>
+                        @
+                        <select name="emadress" id="uemail_adr">
+                            <option value="naver.com">naver.com</option>
+                            <option value="google.com">google.com</option>
+                        </select>
+                    </td>
                 </tr>
             </table>
             <input type="submit" value="전송" >
         </fieldset>
     </form>
-    <?php
-    echo "<h2>입력된 회원 정보</h2>";
-    echo "ID : ".$id."<br>";
-    echo "PW : ".$pw."<br>";
-    echo "PW 확인 : ".$rpw."<br>";
-    echo "이름 : ".$name."<br>";
-    echo "email : ".$email."<br>";
-    ?>
     <script src="./js/chkid.js"></script>
+    <script src="./js/chkpw.js"></script>
 </body>
 </html>
