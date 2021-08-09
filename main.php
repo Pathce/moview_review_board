@@ -57,18 +57,18 @@ while($review = $sql_pop_review->fetch_assoc()) {
         <table id="movie_poster_list">
             <tbody>
             <tr>
-                <td><img src="./img/movie1.jpg" alt="movie_img1"/></td>
-                <td><img src="./img/movie2.jpg" alt="movie_img2"/></td>
-                <td><img src="./img/movie3.jpg" alt="movie_img3"/></td>
-                <td><img src="./img/movie4.jpg" alt="movie_img4"/></td>
-                <td><img src="./img/movie5.jpg" alt="movie_img5"/></td>
+                <td><a href="#"><img id="img_m1" src="./img/movie1.jpg" alt="movie_img1"/></a></td>
+                <td><a href="#"><img id="img_m2" src="./img/movie2.jpg" alt="movie_img2"/></a></td>
+                <td><a href="#"><img id="img_m3" src="./img/movie3.jpg" alt="movie_img3"/></a></td>
+                <td><a href="#"><img id="img_m4" src="./img/movie4.jpg" alt="movie_img4"/></a></td>
+                <td><a href="#"><img id="img_m5" src="./img/movie5.jpg" alt="movie_img5"/></a></td>
             </tr>
             <tr>
-                <td><img src="./img/movie6.jpg" alt="movie_img6"/></td>
-                <td><img src="./img/movie7.jpg" alt="movie_img7"/></td>
-                <td><img src="./img/movie8.jpg" alt="movie_img8"/></td>
-                <td><img src="./img/movie9.jpg" alt="movie_img9"/></td>
-                <td><img src="./img/movie10.jpg" alt="movie_img10"/></td>
+                <td><a href="#"><img id="img_m6" src="./img/movie6.jpg" alt="movie_img6"/></a></td>
+                <td><a href="#"><img id="img_m7" src="./img/movie7.jpg" alt="movie_img7"/></a></td>
+                <td><a href="#"><img id="img_m8" src="./img/movie8.jpg" alt="movie_img8"/></a></td>
+                <td><a href="#"><img id="img_m9" src="./img/movie9.jpg" alt="movie_img9"/></a></td>
+                <td><a href="#"><img id="img_m10" src="./img/movie10.jpg" alt="movie_img10"/></a></td>
             </tr>
             </tbody>
         </table>
@@ -83,12 +83,12 @@ while($review = $sql_pop_review->fetch_assoc()) {
                 <div id="eff2" class="eff-2"></div>
                 <a href="#">전체</a>
             </div>
-            <select id="search_certria">
+            <select id="option_search">
                 <option>제목</option>
                 <option>영화</option>
             </select>
-            <input />
-            <a href="review_board.php"><button id="search_btn">검색</button></a>
+            <input id="input_search"/>
+            <button id="btn_search">검색</button>
             <div>
                 <a href="review_board.php"><button>리뷰 게시판</button></a>
             </div>

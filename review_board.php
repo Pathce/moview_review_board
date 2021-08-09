@@ -143,7 +143,7 @@ while($result = $sql_pop_review->fetch_assoc()) {
                 <?php } ?>
             </table>
         </div>
-        <button>리뷰 작성</button>
+        <a href="review_write.php"><button>리뷰 작성</button><a/>
     </div>
     <script src="./js/reviewBoard.js"></script>
 </body>

@@ -17,7 +17,7 @@
         <h1><a href="./review_board.php">리뷰 게시판</a></h1>
         <h4>리뷰 쓰기</h4>
         <div id="write_area">
-            <form action="write_ok.php" method="post">
+            <form action="review_write_ok.php" method="post">
                 <div id="in_title">
                     <input name="title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required>
                 </div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="wi_line"></div>
                 <div class="in_score">
-                    <input name="movie_score" id="in_score" placeholder="평점">
+                    <input name="movie_score" id="in_score" placeholder="평점" required>
                 </div>
                 <div class="wi_line"></div>
                 <div id="in_content">
