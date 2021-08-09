@@ -22,41 +22,43 @@ if(!empty($_GET)) {
     $sql_review = query("SELECT * FROM review order by R_SEQ desc limit 0, 5");
     $sql_pop_review = query("SELECT * FROM review WHERE R_REC>=5 order by R_SEQ desc limit 0, 5");
 }
-while($result = $sql_review->fetch_assoc()) {
-    $title = $result['R_SUBJECT'];
-    if(strlen($title) > 30) {
-        $title = str_replace($result['R_SUBJECT'], mb_substr($result['R_SUBJECT'], 0, 30,
-                'utf-8')."...", $result['R_SUBJECT']);
+if($sql_movie->num_rows) {
+    while ($result = $sql_review->fetch_assoc()) {
+        $title = $result['R_SUBJECT'];
+        if (strlen($title) > 30) {
+            $title = str_replace($result['R_SUBJECT'], mb_substr($result['R_SUBJECT'], 0, 30,
+                    'utf-8') . "...", $result['R_SUBJECT']);
+        }
+        $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $result['M_SEQ'] . "'");
+        $m_title = $sql_movie->fetch_assoc()['M_NAME'];
+        $sql_co = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $result['R_SEQ'] . "'");
+        $comment = $sql_co->num_rows;
+        $totArray[$totIndex++] = ['r_seq' => $result['R_SEQ'],
+            'u_id' => $result['UR_ID'],
+            'm_title' => $m_title,
+            'r_title' => $title,
+            'r_score' => $result['R_SCORE'],
+            'r_rec' => $result['R_REC'],
+            'r_co' => $comment];
     }
-    $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ="."'".$result['M_SEQ']."'");
-    $m_title = $sql_movie->fetch_assoc()['M_NAME'];
-    $sql_co = query("SELECT * FROM review_comment WHERE R_SEQ="."'".$result['R_SEQ']."'");
-    $comment = $sql_co->num_rows;
-    $totArray[$totIndex++] = ['r_seq'=>$result['R_SEQ'],
-                            'u_id'=>$result['UR_ID'],
-                            'm_title'=>$m_title,
-                            'r_title'=>$title,
-                            'r_score'=>$result['R_SCORE'],
-                            'r_rec'=>$result['R_REC'],
-                            'r_co'=>$comment];
-}
-while($result = $sql_pop_review->fetch_assoc()) {
-    $title = $result['R_SUBJECT'];
-    if(strlen($title) > 30) {
-        $title = str_replace($result['R_SUBJECT'], mb_substr($result['R_SUBJECT'], 0, 30,
-                'utf-8')."...", $result['R_SUBJECT']);
+    while ($result = $sql_pop_review->fetch_assoc()) {
+        $title = $result['R_SUBJECT'];
+        if (strlen($title) > 30) {
+            $title = str_replace($result['R_SUBJECT'], mb_substr($result['R_SUBJECT'], 0, 30,
+                    'utf-8') . "...", $result['R_SUBJECT']);
+        }
+        $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $result['M_SEQ'] . "'");
+        $m_title = $sql_movie->fetch_assoc()['M_NAME'];
+        $sql_co = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $result['R_SEQ'] . "'");
+        $comment = $sql_co->num_rows;
+        $popArray[$popIndex++] = ['r_seq' => $result['R_SEQ'],
+            'u_id' => $result['UR_ID'],
+            'm_title' => $m_title,
+            'r_title' => $title,
+            'r_score' => $result['R_SCORE'],
+            'r_rec' => $result['R_REC'],
+            'r_co' => $comment];
     }
-    $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ="."'".$result['M_SEQ']."'");
-    $m_title = $sql_movie->fetch_assoc()['M_NAME'];
-    $sql_co = query("SELECT * FROM review_comment WHERE R_SEQ="."'".$result['R_SEQ']."'");
-    $comment = $sql_co->num_rows;
-    $popArray[$popIndex++] = ['r_seq'=>$result['R_SEQ'],
-                            'u_id'=>$result['UR_ID'],
-                            'm_title'=>$m_title,
-                            'r_title'=>$title,
-                            'r_score'=>$result['R_SCORE'],
-                            'r_rec'=>$result['R_REC'],
-                            'r_co'=>$comment];
 }
 ?>
 <!DOCTYPE html>
