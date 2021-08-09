@@ -19,19 +19,19 @@
         <div id="write_area">
             <form action="review_write_ok.php" method="post">
                 <div id="in_title">
-                    <input name="title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required>
+                    <input name="r_title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required>
                 </div>
                 <div class="wi_line"></div>
                 <div id="in_name">
-                    <input name="movie_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" required>
+                    <input name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" required>
                 </div>
                 <div class="wi_line"></div>
                 <div class="in_score">
-                    <input name="movie_score" id="in_score" placeholder="평점" required>
+                    <input name="r_score" id="in_score" placeholder="평점" required>
                 </div>
                 <div class="wi_line"></div>
                 <div id="in_content">
-                    <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
+                    <textarea name="r_content" id="ucontent" placeholder="내용" required></textarea>
                 </div>
                 <div class="btn_sub">
                     <button type="submit">작성하기</button>

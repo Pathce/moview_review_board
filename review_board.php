@@ -10,19 +10,23 @@ if(!empty($_GET)) {
         $sql_pop_review = query("SELECT * FROM review WHERE R_SUBJECT LIKE '%".$_GET['search']."%' AND R_REC>=5 order by R_SEQ desc limit 0, 5");
     } else {
         $sql_movie = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME LIKE "."'%".$_GET['search']."%'");
-        $search_seq = '(';
-        while($result = $sql_movie->fetch_assoc()) {
-            $search_seq = $search_seq."".$result['M_SEQ'].", ";
+        if($sql_movie->num_rows) {
+            $search_seq = '(';
+            while($result = $sql_movie->fetch_assoc()) {
+                $search_seq = $search_seq."".$result['M_SEQ'].", ";
+            }
+            $search_seq = substr($search_seq, 0, -2).")";
+            $sql_review = query("SELECT * FROM review WHERE M_SEQ IN ".$search_seq." order by R_SEQ desc limit 0, 5");
+            $sql_pop_review = query("SELECT * FROM review WHERE M_SEQ IN ".$search_seq." AND R_REC>=5 order by R_SEQ desc limit 0, 5");
+        } else {
+
         }
-        $search_seq = substr($search_seq, 0, -2).")";
-        $sql_review = query("SELECT * FROM review WHERE M_SEQ IN ".$search_seq." order by R_SEQ desc limit 0, 5");
-        $sql_pop_review = query("SELECT * FROM review WHERE M_SEQ IN ".$search_seq." AND R_REC>=5 order by R_SEQ desc limit 0, 5");
     }
 } else {
     $sql_review = query("SELECT * FROM review order by R_SEQ desc limit 0, 5");
     $sql_pop_review = query("SELECT * FROM review WHERE R_REC>=5 order by R_SEQ desc limit 0, 5");
 }
-if($sql_movie->num_rows) {
+if(!empty($sql_review)){
     while ($result = $sql_review->fetch_assoc()) {
         $title = $result['R_SUBJECT'];
         if (strlen($title) > 30) {
@@ -41,6 +45,8 @@ if($sql_movie->num_rows) {
             'r_rec' => $result['R_REC'],
             'r_co' => $comment];
     }
+}
+if(!empty($sql_pop_review)){
     while ($result = $sql_pop_review->fetch_assoc()) {
         $title = $result['R_SUBJECT'];
         if (strlen($title) > 30) {
