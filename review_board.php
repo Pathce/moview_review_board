@@ -6,64 +6,78 @@ $totIndex = 0;
 $popIndex = 0;
 if(!empty($_GET)) {
     if($_GET['option'] == '제목'){
-        $sql_review = query("SELECT * FROM review WHERE R_SUBJECT LIKE '%".$_GET['search']."%' order by R_SEQ desc limit 0, 5");
-        $sql_pop_review = query("SELECT * FROM review WHERE R_SUBJECT LIKE '%".$_GET['search']."%' AND R_REC>=5 order by R_SEQ desc limit 0, 5");
+        $sql_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND R.R_SUBJECT LIKE '%".$_GET['search']."%'
+            ORDER BY R.R_SEQ DESC LIMIT 0, 20");
+        $sql_pop_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND R.R_SUBJECT LIKE '%".$_GET['search']."%' AND R_REC >= 5 
+            ORDER BY R_SEQ DESC LIMIT 0, 20");
     } else {
-        $sql_movie = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME LIKE "."'%".$_GET['search']."%'");
-        if($sql_movie->num_rows) {
-            $search_seq = '(';
-            while($result = $sql_movie->fetch_assoc()) {
-                $search_seq = $search_seq."".$result['M_SEQ'].", ";
-            }
-            $search_seq = substr($search_seq, 0, -2).")";
-            $sql_review = query("SELECT * FROM review WHERE M_SEQ IN ".$search_seq." order by R_SEQ desc limit 0, 5");
-            $sql_pop_review = query("SELECT * FROM review WHERE M_SEQ IN ".$search_seq." AND R_REC>=5 order by R_SEQ desc limit 0, 5");
-        } else {
-
-        }
+        $sql_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND M.M_NAME LIKE '%".$_GET['search']."%'
+            ORDER BY R.R_SEQ DESC LIMIT 0, 20");
+        $sql_pop_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND M.M_NAME LIKE '%".$_GET['search']."%' AND R_REC >= 5 
+            ORDER BY R_SEQ DESC LIMIT 0, 20");
     }
 } else {
-    $sql_review = query("SELECT * FROM review order by R_SEQ desc limit 0, 5");
-    $sql_pop_review = query("SELECT * FROM review WHERE R_REC>=5 order by R_SEQ desc limit 0, 5");
+    $sql_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ
+            ORDER BY R.R_SEQ DESC LIMIT 0, 20");
+    $sql_pop_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND R_REC >= 5 
+            ORDER BY R_SEQ DESC LIMIT 0, 20");
 }
+
+$sql_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND R.R_SUBJECT LIKE '%".$_GET['search']."%'
+            ORDER BY R.R_SEQ DESC LIMIT 0, 20");
+$sql_pop_review = query("
+            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+            FROM REVIEW R, MOVIE_INFO M
+            WHERE R.M_SEQ = M.M_SEQ AND R.R_SUBJECT LIKE '%".$_GET['search']."%' AND R_REC >= 5 
+            ORDER BY R_SEQ DESC LIMIT 0, 20");
+
 if(!empty($sql_review)){
-    while ($result = $sql_review->fetch_assoc()) {
-        $title = $result['R_SUBJECT'];
-        if (strlen($title) > 30) {
-            $title = str_replace($result['R_SUBJECT'], mb_substr($result['R_SUBJECT'], 0, 30,
-                    'utf-8') . "...", $result['R_SUBJECT']);
-        }
-        $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $result['M_SEQ'] . "'");
-        $m_title = $sql_movie->fetch_assoc()['M_NAME'];
-        $sql_co = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $result['R_SEQ'] . "'");
-        $comment = $sql_co->num_rows;
-        $totArray[$totIndex++] = ['r_seq' => $result['R_SEQ'],
-            'u_id' => $result['UR_ID'],
-            'm_title' => $m_title,
-            'r_title' => $title,
-            'r_score' => $result['R_SCORE'],
-            'r_rec' => $result['R_REC'],
-            'r_co' => $comment];
+    while ($review = $sql_review->fetch_assoc()) {
+        $r_seq = $review['R_SEQ'];
+        $sql_comment = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+        $r_comment = $sql_comment->num_rows;
+        $totArray[$totIndex++] = ['r_seq'=>$review['R_SEQ'],
+            'u_id'=>$review['U_ID'],
+            'm_title'=>$review['M_TITLE'],
+            'r_title'=>$review['R_TITLE'],
+            'r_score'=>$review['R_SCORE'],
+            'r_rec'=>$review['R_REC'],
+            'r_co'=>$r_comment];
     }
 }
 if(!empty($sql_pop_review)){
-    while ($result = $sql_pop_review->fetch_assoc()) {
-        $title = $result['R_SUBJECT'];
-        if (strlen($title) > 30) {
-            $title = str_replace($result['R_SUBJECT'], mb_substr($result['R_SUBJECT'], 0, 30,
-                    'utf-8') . "...", $result['R_SUBJECT']);
-        }
-        $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $result['M_SEQ'] . "'");
-        $m_title = $sql_movie->fetch_assoc()['M_NAME'];
-        $sql_co = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $result['R_SEQ'] . "'");
-        $comment = $sql_co->num_rows;
-        $popArray[$popIndex++] = ['r_seq' => $result['R_SEQ'],
-            'u_id' => $result['UR_ID'],
-            'm_title' => $m_title,
-            'r_title' => $title,
-            'r_score' => $result['R_SCORE'],
-            'r_rec' => $result['R_REC'],
-            'r_co' => $comment];
+    while ($review = $sql_pop_review->fetch_assoc()) {
+        $r_seq = $review['R_SEQ'];
+        $sql_comment = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+        $r_comment = $sql_comment->num_rows;
+        $popArray[$popIndex++] = ['r_seq'=>$review['R_SEQ'],
+            'u_id'=>$review['U_ID'],
+            'm_title'=>$review['M_TITLE'],
+            'r_title'=>$review['R_TITLE'],
+            'r_score'=>$review['R_SCORE'],
+            'r_rec'=>$review['R_REC'],
+            'r_co'=>$r_comment];
     }
 }
 ?>
@@ -111,7 +125,7 @@ if(!empty($sql_pop_review)){
                     <td><?php echo $arr['r_seq'] ?></td>
                     <td><?php echo $arr['u_id'] ?></td>
                     <td><?php echo $arr['m_title'] ?></td>
-                    <td><?php echo $arr['r_title'] ?></td>
+                    <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title'] ?><a/></td>
                     <td><?php echo $arr['r_score'] ?></td>
                     <td><?php echo $arr['r_rec'] ?></td>
                     <td><?php echo $arr['r_co'] ?></td>

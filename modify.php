@@ -1,5 +1,11 @@
 <?php
-
+include $_SERVER['DOCUMENT_ROOT']."./db.php";
+    $r_seq = $_GET['r_seq'];
+    $sql = query("
+SELECT R.R_SEQ R_SEQ, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_TIMESTAMP R_DATE, R.R_REC R_REC
+FROM REVIEW R, MOVIE_INFO M
+WHERE R_SEQ='$r_seq' AND R.M_SEQ = M.M_SEQ");
+    print_r($sql->fetch_assoc());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
     <h1><a href="./review_board.php">리뷰 게시판</a></h1>
     <h4>리뷰 수정</h4>
     <div id="write_area">
-        <form action="write_ok.php" method="post">
+        <form action="modify_ok.php?r_seq=<?php echo $r_seq; ?>" method="post">
             <div id="in_title">
                 <input name="title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required>
             </div>

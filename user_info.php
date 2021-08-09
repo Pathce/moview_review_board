@@ -1,55 +1,61 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT']."./db.php";
-    session_start();
+include $_SERVER['DOCUMENT_ROOT']."./db.php";
+session_start();
 
-    $rArray = $cArray = Array();
-    $rIndex = $cIndex = 0;
+$rArray = $cArray = Array();
+$rIndex = $cIndex = 0;
 
-    if(empty($_SESSION)) {
-        echo "<script>alert('올바르지 않은 접근 입니다.')</script>";
-        echo "<meta http-equiv="."refresh"." content="."0;url=main.php"." />";
-    }
+$user_id = $_SESSION['user_id'];
 
-    $sql_user = query("SELECT * FROM USER_INFO WHERE UR_ID="."'".$_SESSION['user_id']."'");
-    $user = $sql_user->fetch_assoc();
-    $user_id = $user['UR_ID'];
-    $sql_review_cnt = query("SELECT * FROM REVIEW WHERE UR_ID="."'".$user_id."'");
-    $sql_comment_cnt = query("SELECT * FROM REVIEW_COMMENT WHERE UR_ID="."'".$user_id."'");
-    $sql_review = query("SELECT * FROM REVIEW WHERE UR_ID="."'".$user_id."' ORDER BY R_SEQ DESC LIMIT 0, 5");
-    $sql_comment = query("SELECT * FROM REVIEW_COMMENT WHERE UR_ID="."'".$user_id."' ORDER BY R_SEQ DESC LIMIT 0, 5");
+if(empty($_SESSION)) {
+    echo "<script>alert('올바르지 않은 접근 입니다.')</script>";
+    echo "<meta http-equiv="."refresh"." content="."0;url=main.php"." />";
+}
 
-    while($review = $sql_review->fetch_assoc()) {
-        $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $review['M_SEQ'] . "'");
-        $m_title = $sql_movie->fetch_assoc()['M_NAME'];
-        $title = $review['R_SUBJECT'];
-        if (mb_strlen($title) > 30) {
-            $title = str_replace($review['R_SUBJECT'], mb_substr($review['R_SUBJECT'], 0, 30,
-                    'utf-8') . "...", $review['R_SUBJECT']);
-        }
-        $sql_r_comment = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $review['R_SEQ'] . "'");
-        $r_comment = $sql_r_comment->num_rows;
+$sql_user = query("
+SELECT UR_ID U_ID, UR_EMAIL U_EMAIL, UR_NAME U_NAME
+FROM USER_INFO 
+WHERE UR_ID = '$user_id'");
+$user_info = $sql_user->fetch_assoc();
 
-        $rArray[$rIndex++] = ['r_seq'=>$review['R_SEQ'],
-                            'm_title'=>$m_title,
-                            'r_title'=>$title,
-                            'r_score'=>$review['R_SCORE'],
-                            'r_rec'=>$review['R_REC'],
-                            'r_co'=>$r_comment];
-    }
+$sql_comment_cnt = query("SELECT COUNT(*) CNT FROM REVIEW_COMMENT WHERE UR_ID='$user_id'");
+$comment_cnt = $sql_comment_cnt->fetch_assoc()['CNT'];
 
-    while($comment = $sql_comment->fetch_assoc()) {
-        $review = query("SELECT UR_ID, R_SUBJECT, DATE_FORMAT(R_TIMESTAMP, '%Y-%m-%d %H:%i:%s') AS R_DATE FROM REVIEW WHERE R_SEQ=" . "'" . $comment['R_SEQ'] . "'");
-        $r_user = $review['UR_ID'];
-        $r_date = $review['R_DATE'];
-        $r_title = $review['R_SUBJECT'];
-        $m_title = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $comment['R_SEQ'] . "'")['M_NAME'];
+$sql_review_cnt = query("SELECT COUNT(*) CNT FROM REVIEW WHERE UR_ID='$user_id'");
+$review_cnt = $sql_review_cnt->fetch_assoc()['CNT'];
 
-        $cArray[$cIndex++] = ['u_id'=>$r_user,
-                              'r_date'=>$r_date,
-                              'm_title'=>$m_title,
-                              'r_title'=>$r_title,
-                              'c_content'=>$comment['R_COMMENT']];
-    }
+$sql_review = query("
+SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+FROM REVIEW R, MOVIE_INFO M
+WHERE R.M_SEQ = M.M_SEQ AND R.UR_ID='$user_id' 
+ORDER BY R.R_SEQ DESC LIMIT 0, 5");
+while($review = $sql_review->fetch_assoc()) {
+    $r_seq = $review['R_SEQ'];
+    $sql_co_cnt = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+    $r_comment = $sql_co_cnt->num_rows;
+    $rArray[$rIndex++] = ['r_seq'=>$review['R_SEQ'],
+        'u_id'=>$review['U_ID'],
+        'm_title'=>$review['M_TITLE'],
+        'r_title'=>$review['R_TITLE'],
+        'r_score'=>$review['R_SCORE'],
+        'r_rec'=>$review['R_REC'],
+        'r_co'=>$r_comment];
+}
+
+$sql_comment = query("
+SELECT C.UR_ID U_ID, DATE_FORMAT(C.CO_TIMESTAMP, '%Y-%m-%d') C_DATE, M.M_NAME M_TITLE, R.R_SUBJECT R_TITLE, C.R_COMMENT R_COMMENT
+FROM REVIEW_COMMENT C, REVIEW R, MOVIE_INFO M
+WHERE C.R_SEQ = R.R_SEQ AND R.M_SEQ = M.M_SEQ AND C.UR_ID='$user_id' 
+ORDER BY C.R_SEQ DESC LIMIT 0, 5");
+while($comment = $sql_review->fetch_assoc()) {
+    $r_seq = $comment['R_SEQ'];
+    $cArray[$cIndex++] = ['r_seq'=>$comment['R_SEQ'],
+        'u_id'=>$comment['U_ID'],
+        'c_date'=>$comment['C_DATE'],
+        'm_title'=>$comment['M_TITLE'],
+        'r_title'=>$comment['R_TITLE'],
+        'r_comment'=>$comment['R_COMMENT']];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,23 +71,23 @@
             <table>
                 <tr>
                     <th>ID</th>
-                    <td><?php echo $user_id ?></td>
+                    <td><?php echo $user_info['U_ID'] ?></td>
                 </tr>
                 <tr>
                     <th>E-mail</th>
-                    <td><?php echo $user['UR_EMAIL'] ?></td>
+                    <td><?php echo $user_info['U_EMAIL'] ?></td>
                 </tr>
                 <tr>
                     <th>이름</th>
-                    <td><?php echo $user['UR_NAME'] ?></td>
+                    <td><?php echo $user_info['U_NAME'] ?></td>
                 </tr>
                 <tr>
                     <th>리뷰</th>
-                    <td><?php echo "$sql_review_cnt->num_rows" ?></td>
+                    <td><?php echo $review_cnt ?></td>
                 </tr>
                 <tr>
                     <th>댓글</th>
-                    <td><?php echo "$sql_comment_cnt->num_rows" ?></td>
+                    <td><?php echo $comment_cnt ?></td>
                 </tr>
             </table>
         </fieldset>
@@ -129,10 +135,10 @@
                 <tbody>
                 <tr>
                     <td><?php echo $arr['u_id']; ?></td>
-                    <td><?php echo $arr['r_date']; ?></td>
+                    <td><?php echo $arr['c_date']; ?></td>
                     <td><?php echo $arr['m_title']; ?></td>
                     <td><?php echo $arr['r_title']; ?></td>
-                    <td><?php echo $arr['c_content']; ?></td>
+                    <td><?php echo $arr['c_comment']; ?></td>
                 </tr>
                 </tbody>
             <?php } ?>

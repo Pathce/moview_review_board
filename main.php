@@ -3,30 +3,44 @@
 <?php
 session_start();
 
-$rArray = Array();
-$rIndex = 0;
+$totArray = $popArray = Array();
+$popIndex = $totIndex = 0;
 
-$sql_pop_review = query("SELECT * FROM review WHERE R_REC>=5 order by R_SEQ desc limit 0, 5");
-$sql_review = query("SELECT * FROM review order by R_SEQ desc limit 0, 5");
+$sql_review = query("
+SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+FROM REVIEW R, MOVIE_INFO M
+WHERE R.M_SEQ = M.M_SEQ 
+ORDER BY R.R_SEQ DESC LIMIT 0, 5");
+$sql_pop_review = query("
+SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+FROM REVIEW R, MOVIE_INFO M
+WHERE R.M_SEQ = M.M_SEQ AND R_REC >= 5 
+ORDER BY R_SEQ DESC LIMIT 0, 5");
+
+while($review = $sql_review->fetch_assoc()) {
+    $r_seq = $review['R_SEQ'];
+    $sql_comment = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+    $r_comment = $sql_comment->num_rows;
+    $totArray[$totIndex++] = ['r_seq'=>$review['R_SEQ'],
+        'u_id'=>$review['U_ID'],
+        'm_title'=>$review['M_TITLE'],
+        'r_title'=>$review['R_TITLE'],
+        'r_score'=>$review['R_SCORE'],
+        'r_rec'=>$review['R_REC'],
+        'r_co'=>$r_comment];
+}
 
 while($review = $sql_pop_review->fetch_assoc()) {
-    $title = $review['R_SUBJECT'];
-    if (mb_strlen($title) > 30) {
-        $title = str_replace($review['R_SUBJECT'], mb_substr($review['R_SUBJECT'], 0, 30,
-                'utf-8') . "...", $review['R_SUBJECT']);
-    }
-    $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $review['M_SEQ'] . "'");
-    $m_title = $sql_movie->fetch_assoc()['M_NAME'];
-    $sql_comment = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $review['R_SEQ'] . "'");
+    $r_seq = $review['R_SEQ'];
+    $sql_comment = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
     $r_comment = $sql_comment->num_rows;
-
-    $rArray[$rIndex++] = ['r_seq'=>$review['R_SEQ'],
-                          'u_id'=>$review['UR_ID'],
-                          'm_title'=>$m_title,
-                          'r_title'=>$title,
-                          'r_score'=>$review['R_SCORE'],
-                          'r_rec'=>$review['R_REC'],
-                          'r_co'=>$r_comment];
+    $popArray[$popIndex++] = ['r_seq'=>$review['R_SEQ'],
+        'u_id'=>$review['U_ID'],
+        'm_title'=>$review['M_TITLE'],
+        'r_title'=>$review['R_TITLE'],
+        'r_score'=>$review['R_SCORE'],
+        'r_rec'=>$review['R_REC'],
+        'r_co'=>$r_comment];
 }
 ?>
 <html lang="en">
@@ -108,7 +122,7 @@ while($review = $sql_pop_review->fetch_assoc()) {
                     </tr>
                     </thead>
                     <?php
-                    foreach($rArray as $arr) {
+                    foreach($popArray as $arr) {
                         ?>
                         <tbody>
                         <tr>
@@ -137,6 +151,21 @@ while($review = $sql_pop_review->fetch_assoc()) {
                         <th width="100">댓글 수</th>
                     </tr>
                     </thead>
+                    <?php
+                    foreach($totArray as $arr) {
+                        ?>
+                        <tbody>
+                        <tr>
+                            <td><?php echo $arr['r_seq']; ?></td>
+                            <td><?php echo $arr['u_id']; ?></td>
+                            <td><?php echo $arr['m_title']; ?></td>
+                            <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title']; ?></a></td>
+                            <td><?php echo $arr['r_score']; ?></td>
+                            <td><?php echo $arr['r_rec']; ?></td>
+                            <td><?php echo $arr['r_co']; ?></td>
+                        </tr>
+                        </tbody>
+                    <?php } ?>
                 </table>
             </div>
         </div>
