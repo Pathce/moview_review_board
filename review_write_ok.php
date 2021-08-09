@@ -18,6 +18,13 @@ if($sql->num_rows) {
     $m_seq = $sql->fetch_assoc()['M_SEQ'];
     $sql = query("INSERT INTO REVIEW(M_SEQ, R_SUBJECT, R_CONTENT, UR_ID, R_SCORE, R_REC) 
 VALUES(".$m_seq.", "."'".$r_title."', "."'".$r_content."', "."'".$u_id."', ".$r_score.", "."0)");
+    echo "<script>
+    alert('리뷰가 등록되었습니다.');
+    location.href='./review_board.php';
+    </script>";
 } else {
-    print_r("영화가 없습니다");
+    echo "<script>
+    alert('Error');
+    history.back();
+    </script>";
 }
