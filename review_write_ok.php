@@ -16,8 +16,8 @@ $r_content = $_POST['r_content'];
 $sql = query("SELECT * FROM MOVIE_INFO WHERE M_NAME="."'".$m_title."'");
 if($sql->num_rows) {
     $m_seq = $sql->fetch_assoc()['M_SEQ'];
-    $sql = query("INSERT INTO (M_SEQ, R_SUBJECT, R_CONTENT, UR_ID, R_TIMESTAMP, R_SCORE, R_REC) REVIEW 
-VALUES ("."'".$m_seq."', "."'".$r_title."', "."'".$r_content."', "."'".$u_id."', "."'".$m_seq."', "."'".$m_seq."', "."'".$m_seq."'".")");
+    $sql = query("INSERT INTO REVIEW(M_SEQ, R_SUBJECT, R_CONTENT, UR_ID, R_SCORE, R_REC) 
+VALUES(".$m_seq.", "."'".$r_title."', "."'".$r_content."', "."'".$u_id."', ".$r_score.", "."0)");
 } else {
     print_r("영화가 없습니다");
 }
