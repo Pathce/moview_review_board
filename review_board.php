@@ -41,17 +41,6 @@ if(!empty($_GET)) {
             ORDER BY R_SEQ DESC LIMIT 0, 20");
 }
 
-$sql_review = query("
-            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
-            FROM REVIEW R, MOVIE_INFO M
-            WHERE R.M_SEQ = M.M_SEQ AND R.R_SUBJECT LIKE '%".$_GET['search']."%'
-            ORDER BY R.R_SEQ DESC LIMIT 0, 20");
-$sql_pop_review = query("
-            SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
-            FROM REVIEW R, MOVIE_INFO M
-            WHERE R.M_SEQ = M.M_SEQ AND R.R_SUBJECT LIKE '%".$_GET['search']."%' AND R_REC >= 5 
-            ORDER BY R_SEQ DESC LIMIT 0, 20");
-
 if(!empty($sql_review)){
     while ($review = $sql_review->fetch_assoc()) {
         $r_seq = $review['R_SEQ'];

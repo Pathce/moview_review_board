@@ -52,8 +52,9 @@ $next_review = $next_sql->fetch_assoc();
             echo "<div id=".'edit_review'.">
                     <a href='modify.php?r_seq=";
             echo $review['R_SEQ']."'>";
-            echo "<button id='btn_modify'>수정하기</button></a>
-                    <a href='review_board.php'><button id='btn_remove'>삭제하기</button></a>
+            echo "<button id='btn_modify'>수정하기</button></a>";
+            echo "<a href='delete.php?r_seq=".$review['R_SEQ'];
+            echo "'><button id='btn_remove'>삭제하기</button></a>
                 </div>";
         } else {
             echo "<div></div>";

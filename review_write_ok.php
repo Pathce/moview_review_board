@@ -13,10 +13,11 @@ $m_title = $_POST['m_title'];
 $r_score = $_POST['r_score'];
 $r_content = $_POST['r_content'];
 
-$sql = query("SELECT * FROM MOVIE_INFO WHERE M_NAME="."'".$m_title."'");
+$sql = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME='$m_title'");
+
 if($sql->num_rows) {
     $m_seq = $sql->fetch_assoc()['M_SEQ'];
-    $sql = query("INSERT INTO REVIEW(M_SEQ, R_SUBJECT, R_CONTENT, UR_ID, R_SCORE, R_REC) 
+    $sql_insert = query("INSERT INTO REVIEW(M_SEQ, R_SUBJECT, R_CONTENT, UR_ID, R_SCORE, R_REC) 
 VALUES(".$m_seq.", "."'".$r_title."', "."'".$r_content."', "."'".$u_id."', ".$r_score.", "."0)");
     echo "<script>
     alert('리뷰가 등록되었습니다.');
