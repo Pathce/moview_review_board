@@ -1,6 +1,34 @@
 <?php include $_SERVER['DOCUMENT_ROOT']."./db.php"; ?>
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php
+session_start();
+
+$rArray = Array();
+$rIndex = 0;
+
+$sql_pop_review = query("SELECT * FROM review WHERE R_REC>=5 order by R_SEQ desc limit 0, 5");
+$sql_review = query("SELECT * FROM review order by R_SEQ desc limit 0, 5");
+
+while($review = $sql_pop_review->fetch_assoc()) {
+    $title = $review['R_SUBJECT'];
+    if (mb_strlen($title) > 30) {
+        $title = str_replace($review['R_SUBJECT'], mb_substr($review['R_SUBJECT'], 0, 30,
+                'utf-8') . "...", $review['R_SUBJECT']);
+    }
+    $sql_movie = query("SELECT M_NAME FROM MOVIE_INFO WHERE M_SEQ=" . "'" . $review['M_SEQ'] . "'");
+    $m_title = $sql_movie->fetch_assoc()['M_NAME'];
+    $sql_comment = query("SELECT * FROM review_comment WHERE R_SEQ=" . "'" . $review['R_SEQ'] . "'");
+    $r_comment = $sql_comment->num_rows;
+
+    $rArray[$rIndex++] = ['r_seq'=>$review['R_SEQ'],
+                          'u_id'=>$review['UR_ID'],
+                          'm_title'=>$m_title,
+                          'r_title'=>$title,
+                          'r_score'=>$review['R_SCORE'],
+                          'r_rec'=>$review['R_REC'],
+                          'r_co'=>$r_comment];
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,7 +88,10 @@
                 <option>영화</option>
             </select>
             <input />
-            <a href="review_write.php"><button id="search_btn">검색</button></a>
+            <a href="review_board.php"><button id="search_btn">검색</button></a>
+            <div>
+                <a href="review_board.php"><button>리뷰 게시판</button></a>
+            </div>
         </div>
         <div class="tab_content">
             <div class="tab-1 ">
@@ -77,27 +108,20 @@
                     </tr>
                     </thead>
                     <?php
-                    // REVIEW 테이블에서 R_SEQ를 기준으로 내림차순해서 5개 까지 표시
-                    $sql_review = query("SELECT * FROM review WHERE R_REC>=5 order by R_SEQ desc limit 0, 5");
-                    while($review = $sql_review->fetch_array()) {
-                        $title = $review['R_SUBJECT'];
-                        if(strlen($title) > 30) {
-                            $title = str_replace($review['R_SUBJECT'], mb_substr($review['R_SUBJECT'], 0, 30,
-                                    'utf-8')."...", $review['R_SUBJECT']);
-                        }
+                    foreach($rArray as $arr) {
                         ?>
                         <tbody>
                         <tr>
-                            <td><?php echo $review['R_SEQ']; ?></td>
-                            <td><?php echo $review['UR_ID'] ?></td>
-                            <td><?php echo $review['M_SEQ'] ?></td>
-                            <td><a href="./review.php?r_seq=<?php echo $review['R_SEQ']; ?>"><?php echo $review['R_SUBJECT'] ?></a></td>
-                            <td><?php echo $review['R_SCORE'] ?></td>
-                            <td><?php echo $review['R_REC'] ?></td>
-                            <td><?php echo '0' ?></td>
+                            <td><?php echo $arr['r_seq']; ?></td>
+                            <td><?php echo $arr['u_id']; ?></td>
+                            <td><?php echo $arr['m_title']; ?></td>
+                            <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title']; ?></a></td>
+                            <td><?php echo $arr['r_score']; ?></td>
+                            <td><?php echo $arr['r_rec']; ?></td>
+                            <td><?php echo $arr['r_co']; ?></td>
                         </tr>
                         </tbody>
-                    <?php }?>
+                    <?php } ?>
                 </table>
             </div>
             <div class="tab-2 hidden">
@@ -113,28 +137,6 @@
                         <th width="100">댓글 수</th>
                     </tr>
                     </thead>
-                    <?php
-                    // REVIEW 테이블에서 R_SEQ를 기준으로 내림차순해서 5개 까지 표시
-                    $sql = query("SELECT * FROM review order by R_SEQ desc limit 0, 5");
-                    while($review = $sql->fetch_array()) {
-                        $title = $review['R_SUBJECT'];
-                        if(strlen($title) > 30) {
-                            $title = str_replace($review['R_SUBJECT'], mb_substr($review['R_SUBJECT'], 0, 30,
-                            'utf-8')."...", $review['R_SUBJECT']);
-                        }
-                    ?>
-                    <tbody>
-                    <tr>
-                        <td><?php echo $review['R_SEQ']; ?></td>
-                        <td><?php echo $review['UR_ID'] ?></td>
-                        <td><?php echo $review['M_SEQ'] ?></td>
-                        <td><?php echo $review['R_SUBJECT'] ?></td>
-                        <td><?php echo $review['R_SCORE'] ?></td>
-                        <td><?php echo $review['R_REC'] ?></td>
-                        <td><?php echo '0' ?></td>
-                    </tr>
-                    </tbody>
-                    <?php }?>
                 </table>
             </div>
         </div>

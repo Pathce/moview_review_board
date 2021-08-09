@@ -35,6 +35,7 @@
                         <input type="text" name="email" id="uemail_id" required>
                         @
                         <select name="emadress" id="uemail_adr">
+                            <option value="example.com">example.com</option>
                             <option value="naver.com">naver.com</option>
                             <option value="google.com">google.com</option>
                         </select>
