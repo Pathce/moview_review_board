@@ -2,21 +2,10 @@
 include $_SERVER['DOCUMENT_ROOT']."./db.php";
 
 $r_seq = $_GET['r_seq'];
-$r_title = $_POST['r_title'];
-$m_title = $_POST['m_title'];
+$r_title = addslashes($_POST['r_title']);
+$m_title = addslashes($_POST['m_title']);
 $r_score = $_POST['r_score'];
-$r_content = $_POST['r_content'];
-
-print_r($r_seq);
-echo "<br>";
-print_r($r_title);
-echo "<br>";
-print_r($m_title);
-echo "<br>";
-print_r($r_score);
-echo "<br>";
-print_r($r_content);
-echo "<br>";
+$r_content = addslashes($_POST['r_content']);
 
 $sql_movie = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME='$m_title'");
 $m_seq = $sql_movie->fetch_assoc()['M_SEQ'];

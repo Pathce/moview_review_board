@@ -31,12 +31,12 @@ WHERE R.M_SEQ = M.M_SEQ AND R.UR_ID='$user_id'
 ORDER BY R.R_SEQ DESC LIMIT 0, 5");
 while($review = $sql_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
-    $sql_co_cnt = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+    $sql_co_cnt = query("SELECT * FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
     $r_comment = $sql_co_cnt->num_rows;
     $rArray[$rIndex++] = ['r_seq'=>$review['R_SEQ'],
         'u_id'=>$review['U_ID'],
-        'm_title'=>$review['M_TITLE'],
-        'r_title'=>$review['R_TITLE'],
+        'm_title'=>stripslashes($review['M_TITLE']),
+        'r_title'=>stripslashes($review['R_TITLE']),
         'r_score'=>$review['R_SCORE'],
         'r_rec'=>$review['R_REC'],
         'r_co'=>$r_comment];
@@ -47,14 +47,13 @@ SELECT C.UR_ID U_ID, DATE_FORMAT(C.CO_TIMESTAMP, '%Y-%m-%d') C_DATE, M.M_NAME M_
 FROM REVIEW_COMMENT C, REVIEW R, MOVIE_INFO M
 WHERE C.R_SEQ = R.R_SEQ AND R.M_SEQ = M.M_SEQ AND C.UR_ID='$user_id' 
 ORDER BY C.R_SEQ DESC LIMIT 0, 5");
-while($comment = $sql_review->fetch_assoc()) {
-    $r_seq = $comment['R_SEQ'];
-    $cArray[$cIndex++] = ['r_seq'=>$comment['R_SEQ'],
+while($comment = $sql_comment->fetch_assoc()) {
+    $cArray[$cIndex++] = [
         'u_id'=>$comment['U_ID'],
         'c_date'=>$comment['C_DATE'],
-        'm_title'=>$comment['M_TITLE'],
-        'r_title'=>$comment['R_TITLE'],
-        'r_comment'=>$comment['R_COMMENT']];
+        'm_title'=>stripslashes($comment['M_TITLE']),
+        'r_title'=>stripslashes($comment['R_TITLE']),
+        'r_comment'=>stripslashes($comment['R_COMMENT'])];
 }
 ?>
 <!DOCTYPE html>
@@ -138,7 +137,7 @@ while($comment = $sql_review->fetch_assoc()) {
                     <td><?php echo $arr['c_date']; ?></td>
                     <td><?php echo $arr['m_title']; ?></td>
                     <td><?php echo $arr['r_title']; ?></td>
-                    <td><?php echo $arr['c_comment']; ?></td>
+                    <td><?php echo $arr['r_comment']; ?></td>
                 </tr>
                 </tbody>
             <?php } ?>

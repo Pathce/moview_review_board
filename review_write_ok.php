@@ -8,10 +8,10 @@ if(empty($_SESSION)) {
 }
 
 $u_id = $_SESSION['user_id'];
-$r_title = $_POST['r_title'];
-$m_title = $_POST['m_title'];
+$r_title = addslashes($_POST['r_title']);
+$m_title = addslashes($_POST['m_title']);
 $r_score = $_POST['r_score'];
-$r_content = $_POST['r_content'];
+$r_content = addslashes($_POST['r_content']);
 
 $sql = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME='$m_title'");
 

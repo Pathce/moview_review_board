@@ -28,11 +28,11 @@ if (!isset($_SESSION['user_id'])) {
     <div id="write_area">
         <form action="modify_ok.php?r_seq=<?php echo $r_seq; ?>" method="post">
             <div id="in_title">
-                <textarea name="r_title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" rows="1" required><?php echo $review['R_TITLE']; ?></textarea>
+                <textarea name="r_title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" rows="1" required><?php echo stripslashes($review['R_TITLE']); ?></textarea>
             </div>
             <div class="wi_line"></div>
             <div id="in_name">
-                <textarea name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" rows="1" required><?php echo $review['M_TITLE']; ?></textarea>
+                <textarea name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" rows="1" required><?php echo stripslashes($review['M_TITLE']); ?></textarea>
             </div>
             <div class="wi_line"></div>
             <div class="in_score">
@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="wi_line"></div>
             <div id="in_content">
-                <textarea name="r_content" id="ucontent" placeholder="내용" required><?php echo $review['R_CONTENT']; ?></textarea>
+                <textarea name="r_content" id="ucontent" placeholder="내용" required><?php echo stripslashes($review['R_CONTENT']); ?></textarea>
             </div>
             <div class="btn_sub">
                 <button type="submit">작성하기</button>

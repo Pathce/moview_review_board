@@ -19,35 +19,39 @@ ORDER BY R_SEQ DESC LIMIT 0, 5");
 
 while($review = $sql_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
-    $sql_comment = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+    $sql_comment = query("SELECT * FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
     $r_comment = $sql_comment->num_rows;
-    $totArray[$totIndex++] = ['r_seq'=>$review['R_SEQ'],
-        'u_id'=>$review['U_ID'],
-        'm_title'=>$review['M_TITLE'],
-        'r_title'=>$review['R_TITLE'],
-        'r_score'=>$review['R_SCORE'],
-        'r_rec'=>$review['R_REC'],
-        'r_co'=>$r_comment];
+    $totArray[$totIndex++] = [
+            'r_seq'=>$review['R_SEQ'],
+            'u_id'=>$review['U_ID'],
+            'm_title'=>stripslashes($review['M_TITLE']),
+            'r_title'=>stripslashes($review['R_TITLE']),
+            'r_score'=>$review['R_SCORE'],
+            'r_rec'=>$review['R_REC'],
+            'r_co'=>$r_comment
+    ];
 }
 
 while($review = $sql_pop_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
-    $sql_comment = query("SELECT COUNT(*) FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
+    $sql_comment = query("SELECT * FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
     $r_comment = $sql_comment->num_rows;
-    $popArray[$popIndex++] = ['r_seq'=>$review['R_SEQ'],
-        'u_id'=>$review['U_ID'],
-        'm_title'=>$review['M_TITLE'],
-        'r_title'=>$review['R_TITLE'],
-        'r_score'=>$review['R_SCORE'],
-        'r_rec'=>$review['R_REC'],
-        'r_co'=>$r_comment];
+    $popArray[$popIndex++] = [
+            'r_seq'=>$review['R_SEQ'],
+            'u_id'=>$review['U_ID'],
+            'm_title'=>stripslashes($review['M_TITLE']),
+            'r_title'=>stripslashes($review['R_TITLE']),
+            'r_score'=>$review['R_SCORE'],
+            'r_rec'=>$review['R_REC'],
+            'r_co'=>$r_comment
+    ];
 }
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>메인</title>
-    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css?after" />
 </head>
 <body>
     <div class="header">
