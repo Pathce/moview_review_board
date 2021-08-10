@@ -4,43 +4,46 @@ if(empty($_POST)) {
     echo "<script>alert('올바르지 않은 접근 입니다.')</script>";
     echo "<meta http-equiv="."refresh"." content="."0;url=signin.php"." />";
 }
-// id, pw, rpw, name, email, emadress
 
-echo "<br>";
+$id = stripcslashes($_POST['id']);
+$pw = stripcslashes($_POST['pw']);
+$rpw = stripcslashes($_POST['rpw']);
+$name = stripcslashes($_POST['name']);
+$email = $_POST['email'];
+$emadress = $_POST['emadress'];
+$id_chk = $_POST['id_check'];
+$pw_chk = $_POST['pw_check'];
+$email_chk = $_POST['email_check'];
 
-$email = $_POST['email']."@".$_POST['emadress'];
-$sql_id = query("SELECT * FROM USER_INFO WHERE UR_ID="."'".$_POST['id']."'");
-$chk_userid = $sql_id->fetch_assoc();
-$sql_email = query("SELECT * FROM USER_INFO WHERE UR_EMAIL="."'".$email."'");
-$chk_useremail = $sql_email->fetch_assoc();
-$cnt = 0;
-
-if(isset($chk_userid)) {
-    if($_POST['id'] == $chk_userid['UR_ID']){
-        echo "사용중인 ID 입니다.";
-        echo "<br>";
-        $cnt++;
-    }
-}
-if(isset($chk_useremail)) {
-    if($email == $chk_useremail['UR_EMAIL']){
-        echo "사용중인 EMAIL 입니다.";
-        echo "<br>";
-        $cnt++;
-    }
-}
-if($_POST['pw'] != $_POST['rpw']) {
-    echo "비밀번호가 일치하지 않습니다.";
-    echo "<br>";
-    $cnt++;
-}
-if($cnt == 0) {
-//    $sql = query();
-
-    echo "회원가입";
-    echo "<div>";
-    echo "<a href='index.php'><button>확인</button></a>";
-    echo "</div>";
-}
+$mail = stripcslashes($email."@".$emadress);
 
 ?>
+<link rel="stylesheet" href="./css/signin.css" />
+<form name="submit_form" class="hidden" action="signin.php" method="post">
+    <input name="id_check" value="<?php echo $id_chk; ?>">
+    <input name="pw_check" value="<?php echo $pw_chk; ?>">
+    <input name="email_check" value="<?php echo $email_chk; ?>">
+    <input name="id" value="<?php echo $id; ?>">
+    <input name="pw" value="<?php echo $pw; ?>">
+    <input name="rpw" value="<?php echo $rpw; ?>">
+    <input name="name" value="<?php echo $name; ?>">
+    <input name="email" value="<?php echo $email; ?>">
+    <input name="emadress" value="<?php echo $emadress; ?>">
+</form>
+<?php
+
+if($id_chk && $email_chk && $pw_chk){
+    $sql = query("INSERT INTO USER_INFO(UR_ID, UR_PW, UR_NAME, UR_EMAIL) VALUES('$id', '$pw', '$name', '$mail')");
+    echo "<script>alert('회원가입 되었습니다.');</script>";
+    echo "<meta http-equiv='refresh' content='0;url=main.php' />";
+} else if(!($id_chk && $email_chk)) { ?>
+    <script>
+        alert("ID, EMAIL 중복 검사를 해주십시오.");
+        document.submit_form.submit();
+    </script>
+<?php } else { ?>
+    <script>
+        alert("PW가 일치하지 않습니다.");
+        document.submit_form.submit();
+    </script>
+<?php } ?>
