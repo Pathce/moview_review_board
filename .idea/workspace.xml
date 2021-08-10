@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/comment_ok.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/delete_co.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommendation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/signin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/signin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/signin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/review.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/reviewBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/reviewBoard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modify_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/modify_ok.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review_board.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_board.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review_write_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write_ok.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chkid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chkpw.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/signin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +112,7 @@
       <workItem from="1628501463420" duration="11137000" />
       <workItem from="1628551486345" duration="6404000" />
       <workItem from="1628558907877" duration="75000" />
-      <workItem from="1628558990234" duration="18133000" />
+      <workItem from="1628558990234" duration="21828000" />
     </task>
     <servers />
   </component>

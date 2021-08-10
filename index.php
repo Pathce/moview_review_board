@@ -13,6 +13,7 @@
             <p>ID : <input type="text" name="user_id" /></p>
             <p>PW : <input type="password" name="user_pw" /></p>
             <p><input type="submit" value="로그인" /></p>
+            <p><a href="signin.php">회원가입</a></p>
         </form>
     <?php
         } else {

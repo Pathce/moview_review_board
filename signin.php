@@ -13,17 +13,17 @@
                 <tr>
                     <th>ID</th>
                     <td> : <input type="text" name="id" id="uid" required></td>
-                    <td><input type="button" value="ID 확인" id="btn_chkid"></td>
+                    <td><button id="btn_id_chk">확인</button></td>
                 </tr>
                 <tr>
                     <th>PW</th>
                     <td> : <input type="password" name="pw" id="upw" required></td>
-                    <td id="pw_comment">(8자 이상 13자 이하)</td>
                 </tr>
                 <tr>
                     <th>PW 확인</th>
-                    <td> : <input type="password" name="rpw" id="urpw" required></td>
-                    <td><input type="button" value="PW 확인" id="btn-chkpw" ></td>
+                    <td> : <input type="password" name="rpw" id="r_upw" required></td>
+                    <td id="eql" class="hidden">사용 가능합니다.</td>
+                    <td id="n_eql" class="">비밀번호가 일치하지 않습니다.</td>
                 </tr>
                 <tr>
                     <th>NAME</th>
@@ -40,12 +40,12 @@
                             <option value="google.com">google.com</option>
                         </select>
                     </td>
+                    <td><button>확인</button></td>
                 </tr>
             </table>
             <input type="submit" value="전송" >
         </fieldset>
     </form>
-    <script src="./js/chkid.js"></script>
-    <script src="./js/chkpw.js"></script>
+    <script src="./js/signin.js"></script>
 </body>
 </html>
