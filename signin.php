@@ -13,7 +13,7 @@
                 <tr>
                     <th>ID</th>
                     <td> : <input type="text" name="id" id="uid" required></td>
-                    <td><button id="btn_id_chk">확인</button></td>
+                    <td><button type="submit" id="btn_id_chk" formaction="id_chk.php" formmethod="post">확인</button></td>
                 </tr>
                 <tr>
                     <th>PW</th>
@@ -40,7 +40,7 @@
                             <option value="google.com">google.com</option>
                         </select>
                     </td>
-                    <td><button>확인</button></td>
+                    <td><button type="submit" formaction="email_chk.php" formmethod="post">확인</button></td>
                 </tr>
             </table>
             <input type="submit" value="전송" >
