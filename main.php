@@ -121,22 +121,20 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
             </select>
             <input id="input_search"/>
             <button id="btn_search">검색</button>
-            <div>
-                <a href="review_board.php"><button>리뷰 게시판</button></a>
-            </div>
+            <a href="review_board.php"><button id="btn_review_board">리뷰 게시판</button></a>
         </div>
         <div class="tab_content">
             <div class="tab-1 ">
                 <table class="review_list pop">
                     <thead>
                     <tr>
-                        <th width="100">글 번호</th>
-                        <th width="120">작성자</th>
-                        <th width="200">영화 제목</th>
-                        <th width="800">리뷰 제목</th>
-                        <th width="50">평점</th>
-                        <th width="100">추천 수</th>
-                        <th width="100">댓글 수</th>
+                        <th width="130">글 번호</th>
+                        <th width="150">작성자</th>
+                        <th width="250">영화 제목</th>
+                        <th width="900">리뷰 제목</th>
+                        <th width="100">평점</th>
+                        <th width="150">추천 수</th>
+                        <th width="150">댓글 수</th>
                     </tr>
                     </thead>
                     <?php
@@ -160,13 +158,13 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
                 <table class="review_list">
                     <thead>
                     <tr>
-                        <th width="100">글 번호</th>
-                        <th width="120">작성자</th>
-                        <th width="200">영화 제목</th>
-                        <th width="800">리뷰 제목</th>
-                        <th width="50">평점</th>
-                        <th width="100">추천 수</th>
-                        <th width="100">댓글 수</th>
+                        <th width="130">글 번호</th>
+                        <th width="150">작성자</th>
+                        <th width="250">영화 제목</th>
+                        <th width="900">리뷰 제목</th>
+                        <th width="100">평점</th>
+                        <th width="150">추천 수</th>
+                        <th width="150">댓글 수</th>
                     </tr>
                     </thead>
                     <?php

@@ -36,29 +36,29 @@
 #movie_poster_list {
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 30px;
     border: ridge;
     border-radius: 10px;
+    width: 95%;
 }
 #movie_poster_list img{
-    resize: both;
-    max-width: 150px;
+    width: auto;
     height: auto;
-    margin: 5px 0;
+    resize: both;
+    max-width: 300px;
+    height: auto;
+    margin: 10px 0;
 }
 
 /* 리뷰 목록 */
 .review_container {
-    margin: 50px auto;
-    width: 1470px;
+    margin-top: 50px;
+    width: 1800px;
     position: relative;
 }
 .tab_content {
     position: relative;
     text-align: center;
-}
-.review_list {
-    margin-top: 28px
 }
 .review_list thead th {
     height: 40px;
@@ -93,7 +93,7 @@
     color: #fff;
     text-decoration: none;
     line-height: 50px;
-    transition: all .2s ease;
+    transition: all .1s ease;
     z-index: 2;
     position: relative;
 }
@@ -102,7 +102,7 @@
     height: 50px;
     border: 70px solid #34495e;
     position: absolute;
-    transition: all .2s ease;
+    transition: all .1s ease;
     z-index: 1;
     box-sizing: border-box;
 }
@@ -130,7 +130,7 @@
     color: #34495e;
     text-decoration: none;
     line-height: 50px;
-    transition: all .2s ease;
+    transition: all .1s ease;
     z-index: 2;
     position: relative;
 }
@@ -139,7 +139,7 @@
     height :50px;
     border: 0px solid #34495e;
     position: absolute;
-    transition: all .2s ease;
+    transition: all .1s ease;
     z-index: 1;
     box-sizing: border-box;
 }
@@ -149,6 +149,37 @@
 .non_clicked:hover a{
     color: #fff;
 }
+#option_search {
+    width: 150px;
+    height: 48px;
+    margin-left: 100px;
+    font-size: 15px;
+    position: relative;
+    bottom: 3px;
+}
+#input_search {
+    padding: 5px 0;
+    height: 34px;
+    width: 600px;
+    font-size: 25px;
+    position: relative;
+    top: 1px;
+}
+#btn_search {
+    width: 150px;
+    height: 48px;
+    position: relative;
+    bottom: 1px;
+    font-size: 20px;
+}
+#btn_review_board {
+    width: 150px;
+    height: 48px;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+}
+
 
 /* 통계 목록 */
 .chart {
