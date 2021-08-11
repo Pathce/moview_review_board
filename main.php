@@ -73,11 +73,11 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
             <div class="login_info">
                 <?php
                 if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
-                    echo "<p>로그인을 해 주세요. <a href='index.php'>로그인</a> | <a href='signin.php'>회원가입</a></p>";
+                    echo "<p class='user_login'>로그인을 해 주세요. <a href='index.php'>로그인</a> | <a href='signin.php'>회원가입</a></p>";
                 } else {
                     $user_id = $_SESSION['user_id'];
                     $user_name = $_SESSION['user_name'];
-                    echo "<p><a href='user_info.php?user_id=".$user_id."'><strong>$user_name</strong></a>($user_id)님 환영합니다.";
+                    echo "<p class='user_login'><a href='user_info.php?user_id=".$user_id."'>$user_name</a>($user_id)님 환영합니다.";
                     echo "<a href='logout.php'>로그아웃</a></p>";
                 }
                 ?>

@@ -77,7 +77,10 @@ if($row_num - $start_num < $list) {
     <link rel="stylesheet" type="text/css" href="./css/reviewBoard.css">
 </head>
 <body>
+<div class="header">
     <h4><a href="./main.php">메인</a></h4>
+</div>
+<div class="blank"></div>
     <h1>리뷰 게시판</h1>
     <div class="board">
         <select id="option_search">
@@ -151,7 +154,9 @@ if($row_num - $start_num < $list) {
             </ul>
         </div>
     </div>
-    <a href="review_write.php"><button>리뷰 작성</button><a/>
+<div class="review_write">
+    <a href="review_write.php"><button id="btn_write">리뷰 작성</button><a/>
+</div>
         <script src="./js/reviewBoard.js"></script>
 </body>
 </html>

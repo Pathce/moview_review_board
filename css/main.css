@@ -19,17 +19,38 @@
     width: 100%;
     height: 50px;
 }
+body {
+    width: 100%
+}
+.header {
+    width: 100%
+}
+a {
+    text-decoration: none;
+}
 
 /* 로그인, 로그아웃, 회원가입 */
 .login {
-    position: relative;
-    text-align: right;
-    height: 50px;
+    width: 100%;
+    position: fixed;
+    background: lightblue;
+    opacity: 0.8;
+    z-index: 5;
 }
 .login_info {
-    position: absolute;
-    top: 25%;
-    right: 2%;
+    width: 98%;
+    height: 50px;
+    padding: 1rem;
+    margin: 0;
+    text-align: right;
+    justify-content: right;
+    z-index: 6;
+}
+.user_login {
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    top: 9px;
 }
 
 /* 영화 포스터 목록 */
@@ -40,6 +61,8 @@
     border: ridge;
     border-radius: 10px;
     width: 95%;
+    position: relative;
+    top: 100px;
 }
 #movie_poster_list img{
     width: auto;
@@ -55,6 +78,7 @@
     margin-top: 50px;
     width: 1800px;
     position: relative;
+    top: 80px;
 }
 .tab_content {
     position: relative;
@@ -185,4 +209,5 @@
 .chart {
     width: 1000px;
     position: relative;
+    top: 80px;
 }
