@@ -72,7 +72,7 @@ echo "<br>";
                     </td>
                     <td><button type="submit" formaction="email_chk.php" formmethod="post">확인</button></td>
                     <input class="hidden" id="email_check" name="email_check" value=<?php echo $email_check; ?>>
-                    <td id="email_chk_ok" <?php if(!$email_check) echo 'class="hidden"'; ?>>사용 가능한 Email 입니다.</td>
+                    <td id="email_chk_ok" <?php if(!$email_check || $email_check=="false") echo 'class="hidden"'; ?>>사용 가능한 Email 입니다.</td>
                 </tr>
             </table>
             <input type="submit" value="전송" >

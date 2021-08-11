@@ -80,12 +80,8 @@ if(!empty($sql_comment)) {
         if($_SESSION && $review['UR_ID'] == $_SESSION['user_id']) {
         ?>
             <div id="edit_review">
-                <a href="modify.php?r_seq=<?php echo $review['R_SEQ'] ?>">
-                    <button id="btn_modify">수정하기</button>
-                </a>
-                <a href="delete.php?r_seq=<?php echo $review['R_SEQ'] ?>">
-                    <button id="btn_remove">삭제하기</button>
-                </a>
+                <a href="modify.php?r_seq=<?php echo $review['R_SEQ'] ?>"><button id="btn_modify">수정하기</button></a>
+                <a href="delete.php?r_seq=<?php echo $review['R_SEQ'] ?>"><button id="btn_remove">삭제하기</button></a>
         <?php
         } else {
             echo "<div></div>";

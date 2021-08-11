@@ -3,8 +3,8 @@
 <?php
 session_start();
 
-$totArray = $popArray = Array();
-$popIndex = $totIndex = 0;
+$totArray = $popArray = $dateArray = Array();
+$popIndex = $totIndex = $dateIndex= 0;
 
 $sql_review = query("
 SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
@@ -16,6 +16,12 @@ SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_S
 FROM REVIEW R, MOVIE_INFO M
 WHERE R.M_SEQ = M.M_SEQ AND R_REC >= 5 
 ORDER BY R_SEQ DESC LIMIT 0, 5");
+$sql_date_chart = query("
+SELECT DATE_FORMAT(R.R_TIMESTAMP, '%Y-%m-%d') R_DATE, GI.G_NAME G_NAME, COUNT(GI.G_NAME) CNT
+FROM GENRE_LIST GL, GENRE_INFO GI, MOVIE_INFO M, REVIEW R
+WHERE GL.G_SEQ = GI.G_SEQ AND GL.M_SEQ = M.M_SEQ AND R.M_SEQ = M.M_SEQ
+GROUP BY R_DATE, G_NAME
+ORDER BY R_DATE DESC");
 
 while($review = $sql_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
@@ -31,7 +37,6 @@ while($review = $sql_review->fetch_assoc()) {
             'r_co'=>$r_comment
     ];
 }
-
 while($review = $sql_pop_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
     $sql_comment = query("SELECT * FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
@@ -46,6 +51,17 @@ while($review = $sql_pop_review->fetch_assoc()) {
             'r_co'=>$r_comment
     ];
 }
+while($result = $sql_date_chart->fetch_assoc()) {
+    $dateArray[$dateIndex++] = [
+            "date"=>$result['R_DATE'],
+            "genre"=>$result['G_NAME'],
+            "cnt"=>$result['CNT']
+    ];
+}
+print_r($sql_date_chart);
+echo "<br>";
+echo "<br>";
+print_r($dateArray);
 ?>
 <html lang="en">
 <head>
@@ -178,6 +194,7 @@ while($review = $sql_pop_review->fetch_assoc()) {
     <div class="chart">
         <button>종합 통계</button>
         <div class="date_line_graph">
+            <div id="date_data" class="hidden"><?php echo "a"; ?></div>
             <h1>날짜 별 꺾은선 그래프 들어갈 자리</h1>
         </div>
         <div class="date_circle_graph">

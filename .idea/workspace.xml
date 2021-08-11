@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/chart/userInfo_totChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email_chk.php" beforeDir="false" afterPath="$PROJECT_DIR$/email_chk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/id_chk.php" beforeDir="false" afterPath="$PROJECT_DIR$/id_chk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/signin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/signin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signin_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/signin_ok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -112,6 +113,7 @@
       <workItem from="1628558907877" duration="75000" />
       <workItem from="1628558990234" duration="23684000" />
       <workItem from="1628590691356" duration="8279000" />
+      <workItem from="1628638547372" duration="12787000" />
     </task>
     <servers />
   </component>
@@ -139,5 +141,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

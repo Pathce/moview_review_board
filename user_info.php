@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT']."./db.php";
 session_start();
 
-$rArray = $cArray = Array();
+$rArray = $cArray = $crArray = $ccArray = Array();
 $rIndex = $cIndex = 0;
 
 $user_id = $_SESSION['user_id'];
@@ -55,12 +55,34 @@ while($comment = $sql_comment->fetch_assoc()) {
         'r_title'=>stripslashes($comment['R_TITLE']),
         'r_comment'=>stripslashes($comment['R_COMMENT'])];
 }
+
+$sql_r_chart = query("SELECT R.UR_ID U_ID, GI.G_NAME GENRE, COUNT(GI.G_NAME) CNT
+FROM GENRE_LIST GL, GENRE_INFO GI, MOVIE_INFO M, REVIEW R
+WHERE GL.G_SEQ = GI.G_SEQ AND GL.M_SEQ = M.M_SEQ AND R.M_SEQ = M.M_SEQ AND R.UR_ID='$user_id'
+GROUP BY R.UR_ID, GI.G_NAME
+ORDER BY CNT DESC");
+while($result = $sql_r_chart->fetch_assoc()) {
+    $crArray[$result['GENRE']] = [$result['CNT']];
+}
+
+$sql_c_chart = query("SELECT C.UR_ID U_ID, GI.G_NAME GENRE, COUNT(GI.G_NAME) CNT
+FROM GENRE_LIST GL, GENRE_INFO GI, MOVIE_INFO M, REVIEW R, REVIEW_COMMENT C
+WHERE GL.G_SEQ = GI.G_SEQ AND GL.M_SEQ = M.M_SEQ AND R.M_SEQ = M.M_SEQ AND R.R_SEQ = C.R_SEQ AND C.UR_ID='$user_id'
+GROUP BY GI.G_NAME
+ORDER BY CNT DESC");
+while($result = $sql_c_chart->fetch_assoc()) {
+    $ccArray[$result['GENRE']] = [$result['CNT']];
+}
+
+$jsonRArr = json_encode($crArray, JSON_UNESCAPED_UNICODE);
+$jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>내 정보</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/userInfo.css" />
 </head>
 <body>
@@ -153,17 +175,22 @@ while($comment = $sql_comment->fetch_assoc()) {
             </div>
             <div class="chart_content">
                 <div class="chart01 ">
-                    전체 차트
+                    <h3>전체 차트</h3>
                 </div>
                 <div class="chart02 hidden">
-                    리뷰 차트
+                    <h3>리뷰 차트</h3>
+                    <svg id="reviewChart" width="800" height="400"></svg>
+                    <div id="review_data" class="hidden"><?php echo $jsonRArr; ?></div>
                 </div>
                 <div class="chart03 hidden">
-                    댓글 차트
+                    <h3>댓글 차트</h3>
+                    <svg id="commentChart" width="800" height="400"></svg>
+                    <div id="comment_data" class="hidden"><?php echo $jsonCArr; ?></div>
                 </div>
             </div>
         </div>
     </div>
     <script src="./js/userInfo.js"></script>
+    <script src="./js/chart/userInfo_totChart.js"></script>
 </body>
 </html>
