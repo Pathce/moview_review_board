@@ -180,16 +180,17 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
                 <div class="chart02 hidden">
                     <h3>리뷰 차트</h3>
                     <svg id="reviewChart" width="800" height="400"></svg>
-                    <div id="review_data" class="hidden"><?php echo $jsonRArr; ?></div>
                 </div>
                 <div class="chart03 hidden">
                     <h3>댓글 차트</h3>
                     <svg id="commentChart" width="800" height="400"></svg>
-                    <div id="comment_data" class="hidden"><?php echo $jsonCArr; ?></div>
+
                 </div>
             </div>
         </div>
     </div>
+    <div id="comment_data" class="hidden"><?php echo $jsonCArr; ?></div>
+    <div id="review_data" class="hidden"><?php echo $jsonRArr; ?></div>
     <script src="./js/userInfo.js"></script>
     <script src="./js/chart/userInfo_totChart.js"></script>
 </body>

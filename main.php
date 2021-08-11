@@ -20,8 +20,8 @@ $sql_date_chart = query("
 SELECT DATE_FORMAT(R.R_TIMESTAMP, '%Y-%m-%d') R_DATE, GI.G_NAME G_NAME, COUNT(GI.G_NAME) CNT
 FROM GENRE_LIST GL, GENRE_INFO GI, MOVIE_INFO M, REVIEW R
 WHERE GL.G_SEQ = GI.G_SEQ AND GL.M_SEQ = M.M_SEQ AND R.M_SEQ = M.M_SEQ
-GROUP BY R_DATE, G_NAME
-ORDER BY R_DATE DESC");
+GROUP BY G_NAME, R_DATE 
+ORDER BY G_NAME, R_DATE DESC");
 
 while($review = $sql_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
@@ -53,20 +53,18 @@ while($review = $sql_pop_review->fetch_assoc()) {
 }
 while($result = $sql_date_chart->fetch_assoc()) {
     $dateArray[$dateIndex++] = [
-            "date"=>$result['R_DATE'],
             "genre"=>$result['G_NAME'],
+            "date"=>$result['R_DATE'],
             "cnt"=>$result['CNT']
     ];
 }
-print_r($sql_date_chart);
-echo "<br>";
-echo "<br>";
-print_r($dateArray);
+$json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>메인</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css?after" />
 </head>
 <body>
@@ -194,8 +192,8 @@ print_r($dateArray);
     <div class="chart">
         <button>종합 통계</button>
         <div class="date_line_graph">
-            <div id="date_data" class="hidden"><?php echo "a"; ?></div>
             <h1>날짜 별 꺾은선 그래프 들어갈 자리</h1>
+            <svg id="date_line_graph" width="900" height="550"></svg>
         </div>
         <div class="date_circle_graph">
             <input>
@@ -222,6 +220,8 @@ print_r($dateArray);
     <div class="footer">
 
     </div>
+    <div id="date_data" class="hidden"><?php echo $json_date_data; ?></div>
     <script src="./js/main.js"></script>
+    <script src="./js/chart/mainChart.js"></script>
 </body>
 </html>

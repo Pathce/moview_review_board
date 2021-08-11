@@ -21,6 +21,8 @@ const width = 800;
 const height = 400;
 const margin = {top: 40, left: 40, bottom: 40, right: 40};
 
+console.log(c_data);
+
 // tot____________________________________________________________________________________
 const t_x = d3.scaleBand()
     .domain(t_data.map(d => d.name))
