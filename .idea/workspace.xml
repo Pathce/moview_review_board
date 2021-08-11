@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/chart/mainChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/stat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/chart/statChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stat.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chart/userInfo_totChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart/userInfo_totChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +112,7 @@
       <workItem from="1628558907877" duration="75000" />
       <workItem from="1628558990234" duration="23684000" />
       <workItem from="1628590691356" duration="8279000" />
-      <workItem from="1628638547372" duration="25593000" />
+      <workItem from="1628638547372" duration="29838000" />
     </task>
     <servers />
   </component>

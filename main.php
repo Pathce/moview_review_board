@@ -190,32 +190,32 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     </div>
     <div class="boundary"></div>
     <div class="chart">
-        <button>종합 통계</button>
+        <a href="stat.php"><button>종합 통계</button></a>
         <div class="date_line_graph">
             <h1>날짜 별 꺾은선 그래프 들어갈 자리</h1>
             <svg id="date_line_graph" width="900" height="550"></svg>
         </div>
-        <div class="date_circle_graph">
-            <input>
-            <button>검색</button>
-            <table>
-                <thead>
-                <tr>
-                    <th width="50">순위</th>
-                    <th width="120">단어</th>
-                    <th width="100">횟수</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>피곤해</td>
-                    <td>100</td>
-                </tr>
-                </tbody>
-            </table>
-            <h1>날짜 별 원형 그래프 들어갈 자리</h1>
-        </div>
+<!--        <div class="date_circle_graph">-->
+<!--            <input>-->
+<!--            <button>검색</button>-->
+<!--            <table>-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th width="50">순위</th>-->
+<!--                    <th width="120">단어</th>-->
+<!--                    <th width="100">횟수</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <td>1</td>-->
+<!--                    <td>피곤해</td>-->
+<!--                    <td>100</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--            <h1>날짜 별 원형 그래프 들어갈 자리</h1>-->
+<!--        </div>-->
     </div>
     <div class="footer">
 
