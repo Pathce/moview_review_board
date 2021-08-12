@@ -47,90 +47,102 @@ if(!empty($sql_comment)) {
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
             crossorigin="anonymous"></script>
-    <script src="./js/review.js"></script>
 </head>
 <body>
+<div class="header">
+    <h4><a href="./main.php">메인</a></h4>
+</div>
+<div class="blank"></div>
     <div id="review_read">
         <h2><a href="./review_board.php">리뷰 게시판</a></h2>
-        <h2><?php echo stripslashes($review['R_SUBJECT']); ?></h2>
-        <h3><?php echo stripslashes($movie['M_NAME']); ?></h3>
-        <div id="score">
-            <?php echo $review['R_SCORE']; ?>
-        </div>
-        <div id="user_info">
-            <?php echo "작성자 : ".$review['UR_ID']; ?>
-        </div>
-        <div id="write_date">
-            <?php echo $r_date." "; ?>
-            <?php echo $r_time; ?>
-        </div>
-        <div id="review_content">
-            <?php echo stripslashes($review['R_CONTENT']); ?>
-        </div>
-        <div id="rec">
-            <?php echo $review['R_REC']; ?>
-        </div>
+        <table>
+            <thead>
+            <td id="review_title">
+                <?php echo stripslashes($review['R_SUBJECT']); ?>
+            </td>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="movie_title"><?php echo stripslashes($movie['M_NAME']); ?></td>
+            </tr>
+            <tr>
+                <td id="score"><?php echo $review['R_SCORE']; ?></td>
+            </tr>
+            <tr>
+                <td id="user_info"><?php echo "작성자 : ".$review['UR_ID']; ?></td>
+            </tr>
+            <tr>
+                <td id="write_date">
+                    <?php echo $r_date." "; ?>
+                    <?php echo $r_time; ?>
+                </td>
+            </tr>
+            <tr>
+                <td id="review_content"><?php echo stripslashes($review['R_CONTENT']); ?></td>
+            </tr>
+            </tbody>
+        </table>
         <div id="movie_rec">
             <a href="./recommendation.php?r_seq=<?php echo $review['R_SEQ'] ?>">
-                <button id="btn_rec">⭐추천하기</button>
+                <button id="btn_rec">⭐ <?php echo $review['R_REC']; ?></button>
             </a>
         </div>
+        <div id="edit_review">
         <?php
         session_start();
         if($_SESSION && $review['UR_ID'] == $_SESSION['user_id']) {
         ?>
-            <div id="edit_review">
                 <a href="modify.php?r_seq=<?php echo $review['R_SEQ'] ?>"><button id="btn_modify">수정하기</button></a>
-                <a href="delete.php?r_seq=<?php echo $review['R_SEQ'] ?>"><button id="btn_remove">삭제하기</button></a>
-        <?php
-        } else {
-            echo "<div></div>";
-        }
-        ?>
-    </div>
-    <div id="pre_review">
-        이전 <a<?php
-        if($pre_review) {
-            echo " href='./review.php?r_seq=".$pre_review['R_SEQ']."'>".stripslashes($pre_review['R_SUBJECT']);
-        } else {
-            ?>>게시물이 존재하지 않습니다.
-        <?php }
-        ?></a>
-    </div>
-    <div id="next_review">
-        다음 <a<?php
-        if($next_review) {
-            echo " href='./review.php?r_seq=".$next_review['R_SEQ']."'>".stripslashes($next_review['R_SUBJECT']);
-        } else {
-            ?>>게시물이 존재하지 않습니다.
-        <?php }
-        ?></a>
-    </div>
-    <div id="comment">
-        <h3>댓글 목록</h3>
-        <div id="comment_list">
-            <?php
-            foreach($cArray as $comment) {
-                ?><div>
-                <div><?php echo $comment['u_id']; ?></div>
-                <div><?php echo stripslashes($comment['c_comment']); ?></div>
-                <div><?php echo $comment['c_date']; ?></div>
-                <?php
-                if(isset($_SESSION) && $_SESSION['user_id'] == $comment['u_id']) { ?>
-                <p><a href="./delete_co.php?c_seq=<?php echo $comment['c_seq'] ?>">삭제</a></p>
-                <?php }?>
-                </div>
-                <?php
-            }
-            ?>
+                <a><button id="btn_remove">삭제하기</button></a>
+        <?php } ?>
         </div>
+        <div id="review_etc">
+            <div id="pre_review">
+                이전 <a<?php
+                if($pre_review) {
+                    echo " href='./review.php?r_seq=".$pre_review['R_SEQ']."'>".stripslashes($pre_review['R_SUBJECT']);
+                } else {
+                ?>>게시물이 존재하지 않습니다.
+                    <?php }
+                    ?></a>
+            </div>
+            <div id="next_review">
+                다음 <a<?php
+                if($next_review) {
+                    echo " href='./review.php?r_seq=".$next_review['R_SEQ']."'>".stripslashes($next_review['R_SUBJECT']);
+                } else {
+                ?>>게시물이 존재하지 않습니다.
+                    <?php }
+                    ?></a>
+            </div>
+        </div>
+    <div id="comment">
+        <h3>댓글</h3>
         <div id="co_write">
             <form action="comment_ok.php?r_seq=<?php echo $r_seq ?>" method="post">
                 <textarea name="content"></textarea>
                 <button id="btn_c_write">작성</button>
             </form>
         </div>
+        <div id="comment_list">
+            <?php
+            foreach($cArray as $comment) {
+                ?><div id="co">
+                <div id="co_id"><?php echo $comment['u_id']; ?></div>
+                <div id="co_content"><?php echo stripslashes($comment['c_comment']); ?></div>
+                <div id="co_date"><?php echo $comment['c_date']; ?></div>
+                <?php
+                if(isset($_SESSION) && $_SESSION['user_id'] == $comment['u_id']) { ?>
+                    <a href="./delete_co.php?c_seq=<?php echo $comment['c_seq'] ?>"><p id="co_delete">삭제</p></a>
+                <?php }?>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
     </div>
     </div>
+<div id="r_seq_value" class="hidden"><?php echo $review['R_SEQ'] ?></div>
 </body>
+<script src="./js/review.js"></script>
 </html>

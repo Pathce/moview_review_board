@@ -71,13 +71,14 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     <div class="header">
         <form class="login" name="login_form">
             <div class="login_info">
+                <p id="title">영화 리뷰</p>
                 <?php
                 if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
                     echo "<p class='user_login'>로그인을 해 주세요. <a href='index.php'>로그인</a> | <a href='signin.php'>회원가입</a></p>";
                 } else {
                     $user_id = $_SESSION['user_id'];
                     $user_name = $_SESSION['user_name'];
-                    echo "<p class='user_login'><a href='user_info.php?user_id=".$user_id."'>$user_name</a>($user_id)님 환영합니다.";
+                    echo "<p class='user_login'><a href='user_info.php?user_id=".$user_id."'>$user_name</a>($user_id)님 환영합니다. ";
                     echo "<a href='logout.php'>로그아웃</a></p>";
                 }
                 ?>
@@ -109,17 +110,17 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
         <div class="review_tabs">
             <div id="tab001" class="clicked">
                 <div id="eff1" class="eff-1"></div>
-                <a href="#">인기</a>
+                <a>인기</a>
             </div>
             <div id="tab002" class="non_clicked">
                 <div id="eff2" class="eff-2"></div>
-                <a href="#">전체</a>
+                <a>전체</a>
             </div>
             <select id="option_search">
                 <option>제목</option>
                 <option>영화</option>
             </select>
-            <input id="input_search"/>
+            <input id="input_search" placeholder="검색어 입력"/>
             <button id="btn_search">검색</button>
             <a href="review_board.php"><button id="btn_review_board">리뷰 게시판</button></a>
         </div>
@@ -190,7 +191,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     <div class="chart">
         <a href="stat.php"><button>종합 통계</button></a>
         <div class="date_line_graph">
-            <h1>날짜 별 꺾은선 그래프 들어갈 자리</h1>
+            <h1>날짜 별 댓글 수</h1>
             <svg id="date_line_graph" width="900" height="550"></svg>
         </div>
 <!--        <div class="date_circle_graph">-->

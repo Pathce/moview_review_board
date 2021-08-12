@@ -1,11 +1,12 @@
-$(document).ready(function() {
-    $('#btn_modify_co').click(function() {
-        let obj = $(this).closest("#comment_list").find("#edit_comment");
-        obj.dialog({
-            modal: true,
-            width: 650,
-            height: 200,
-            title: "댓글 수정"
-        });
-    });
-})
+const btn_remove = document.querySelector('#btn_remove');
+
+function onClickBtnRemove() {
+    if(confirm("삭제하시겠습니까?")) {
+        const num = document.querySelector('#r_seq_value').textContent;
+
+        console.log(num)
+        location.href="delete.php?r_seq=" + num;
+    }
+}
+
+btn_remove.addEventListener('click', onClickBtnRemove);

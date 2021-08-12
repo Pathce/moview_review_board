@@ -81,47 +81,48 @@ if($row_num - $start_num < $list) {
     <h4><a href="./main.php">메인</a></h4>
 </div>
 <div class="blank"></div>
-    <h1>리뷰 게시판</h1>
-    <div class="board">
-        <select id="option_search">
-            <option>제목</option>
-            <option>영화</option>
-        </select>
-        <input id="input_search">
-        <button id="btn_search">검색</button>
-    </div>
-    <div class="board01 ">
-        <h3>전체 리뷰</h3>
-        <table>
-            <thead>
-            <tr>
-                <th width="70">글 번호</th>
-                <th width="120">작성자</th>
-                <th width="200">영화 제목</th>
-                <th width="500">리뷰 제목</th>
-                <th width="50">평점</th>
-                <th width="70">추천 수</th>
-                <th width="70">댓글 수</th>
-            </tr>
-            </thead>
-            <?php
-//            foreach($totArray as $arr) {
-            for($i = $start_num; $i < $end_num; $i++){
-                $arr = $totArray[$i];
-                ?>
-                <tbody>
+    <div class="board01">
+        <h1>리뷰 게시판</h1>
+        <div class="board">
+            <select id="option_search">
+                <option>제목</option>
+                <option>영화</option>
+            </select>
+            <input id="input_search">
+            <button id="btn_search">검색</button>
+        </div>
+        <div id="table_container">
+            <table id="review_table">
+                <thead>
                 <tr>
-                    <td><?php echo $arr['r_seq'] ?></td>
-                    <td><?php echo $arr['u_id'] ?></td>
-                    <td><?php echo $arr['m_title'] ?></td>
-                    <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title'] ?><a/></td>
-                    <td><?php echo $arr['r_score'] ?></td>
-                    <td><?php echo $arr['r_rec'] ?></td>
-                    <td><?php echo $arr['r_co'] ?></td>
+                    <th width="60">글 번호</th>
+                    <th width="70">작성자</th>
+                    <th width="140">영화 제목</th>
+                    <th width="500">리뷰 제목</th>
+                    <th width="80">평점</th>
+                    <th width="80">추천 수</th>
+                    <th width="80">댓글 수</th>
                 </tr>
-                </tbody>
-            <?php } ?>
-        </table>
+                </thead>
+                <?php
+                //            foreach($totArray as $arr) {
+                for($i = $start_num; $i < $end_num; $i++){
+                    $arr = $totArray[$i];
+                    ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $arr['r_seq'] ?></td>
+                        <td><?php echo $arr['u_id'] ?></td>
+                        <td><?php echo $arr['m_title'] ?></td>
+                        <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title'] ?><a/></td>
+                        <td><?php echo $arr['r_score'] ?></td>
+                        <td><?php echo $arr['r_rec'] ?></td>
+                        <td><?php echo $arr['r_co'] ?></td>
+                    </tr>
+                    </tbody>
+                <?php } ?>
+            </table>
+        </div>
         <div id="page_num">
             <ul>
                 <?php
@@ -153,10 +154,10 @@ if($row_num - $start_num < $list) {
                 ?>
             </ul>
         </div>
+        <div class="review_write">
+            <a href="review_write.php"><button id="btn_write">리뷰 작성</button></a>
+        </div>
     </div>
-<div class="review_write">
-    <a href="review_write.php"><button id="btn_write">리뷰 작성</button><a/>
-</div>
-        <script src="./js/reviewBoard.js"></script>
+<script src="./js/reviewBoard.js"></script>
 </body>
 </html>

@@ -1,3 +1,231 @@
+/* 공통 */
+body {
+    width: 100%;
+    margin: 0 0 0 0;
+}
+a {
+    text-decoration: none;
+}
 .hidden {
     display: none;
+}
+
+
+/* 헤더 */
+.header {
+    width: 100%;
+    height: 82px;
+    position: fixed;
+    background: lightblue;
+    opacity: 0.8;
+    font-size: 20px;
+    z-index: 6;
+}
+.header h4 {
+    position: relative;
+    margin-top: 22px;
+    text-align: center;
+    font-family: "맑은 고딕 Semilight";
+    font-weight: bold;
+    font-size: 24px;
+}
+.blank {
+    height: 60px;
+}
+
+/* 전체 컨테이너 */
+#review_read {
+    width: 70%;
+    padding-top: 20px;
+    align-items: center;
+    border-right: 2px solid #f3f3f3;
+    border-left: 2px solid #f3f3f3;
+    position: relative;
+    left: 50%;
+    margin-left: -35%;
+}
+#review_read h2 {
+    text-align: center;
+}
+
+/* 리뷰 */
+#review_read table {
+    width: 60%;
+    min-height: 400px;
+    padding: 15px;
+    background: #f3f3f3;
+    border: 2px solid #f3f3f3;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-indent: 10px;
+    position: relative;
+    left: 50%;
+    margin-left: -30%;
+}
+#review_read table tbody td {
+    background: white;
+    border: 2px solid #f3f3f3;
+}
+#review_read #review_title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#review_read #movie_title {
+    background: white;
+    height: 30px;
+}
+#review_read #score {
+    background: white;
+    height: 30px;
+}
+#review_read #user_info {
+    background: white;
+    height: 30px;
+}
+#review_read #write_date {
+    background: white;
+    height: 30px;
+}
+#review_content {
+    background: white;
+    padding: 5px;
+    vertical-align: top;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#edit_review {
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    margin-left: -10%;
+}
+#btn_modify {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    border: 2px solid #f5f5f5;
+    border-radius: 5px;
+    background: white;
+}
+#btn_modify:hover {
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+    background: #f1f1f1;
+}
+#btn_remove {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    border: 2px solid #f5f5f5;
+    border-radius: 5px;
+    background: white;
+}
+#btn_remove:hover {
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+    background: #f1f1f1;
+}
+#btn_rec {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    border: 2px solid #f5f5f5;
+    border-radius: 5px;
+    background: white;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+}
+#btn_rec:hover {
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+    background: #f1f1f1;
+}
+#review_etc {
+    width: 60%;
+    padding : 10px;
+    border: 2px solid #F3F3F3FF;
+    border-radius: 5px;
+    position: relative;
+    left: 50%;
+    margin-left: -30%;
+}
+#review_etc #pre_review {
+    font-size: 12px;
+}
+#review_etc #next_review {
+    font-size: 12px;
+}
+
+/* 댓글 */
+#comment {
+    width: 60%;
+    padding: 5px;
+    position: relative;
+    left: 50%;
+    margin-left: -30%;
+}
+#co_write textarea {
+    width: 800px;
+    height: 50px;
+    resize: none;
+    position: relative;
+    left: 50%;
+    margin-left: -400px;
+}
+#movie_rec {
+    margin: 20px;
+}
+#btn_c_write {
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+    border: 2px solid #f5f5f5;
+    border-radius: 5px;
+    background: white;
+    position: relative;
+    top: 30px;
+    left: 310px;
+}
+#btn_c_write:hover {
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+    background: #f1f1f1;
+}
+#comment_list {
+    width: 100%;
+    margin-top: 50px;
+    padding: 5px;
+    border: 3px solid #F3F3F3FF;
+    border-radius: 10px;
+}
+#co {
+    padding: 5px;
+    border-bottom: 2px solid #ececec;
+}
+#co #co_id {
+    padding: 5px;
+    border-bottom: 1px solid #F3F3F3FF;
+    font-size: 12px;
+}
+#co #co_content {
+    min-height: 50px;
+    padding: 5px;
+    font-size: 13px;
+}
+#co #co_date {
+    padding: 5px;
+    border-top: 1px solid #F3F3F3FF;
+    font-size: 12px;
+    color: #818181;
+}
+#co #co_delete {
+    float: right;
+    font-size: 12px;
+    color: rgba(161, 161, 161);
+    position: relative;
+    bottom: 30px;
+    right: 10px;
 }

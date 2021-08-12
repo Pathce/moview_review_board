@@ -8,5 +8,4 @@ SET R_REC = R_REC + 1
 WHERE R_SEQ='$r_seq'");
 ?>
 
-<script type="text/javascript">alert("수정되었습니다.");</script>
 <meta http-equiv="refresh" content="0 url=./review.php?r_seq=<?php echo $r_seq ?>">
