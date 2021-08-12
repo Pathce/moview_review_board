@@ -1,3 +1,65 @@
+/* 공통 */
+body {
+    width: 100%;
+    margin: 0 0 0 0;
+}
+a {
+    text-decoration: none;
+}
 .hidden {
     display: none;
+}
+th, td {
+    font-size: 18px;
+}
+
+/* 회원가입 컨테이너 */
+.signin_container {
+    width: 700px;
+    height: 600px;
+    border: 5px solid #72fcc8;
+    border-radius: 10px;
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: 50px;
+    text-align: center;
+}
+#uid {
+    width: 300px;
+}
+#upw {
+
+}
+#r_upw {
+
+}
+#u_name {
+
+}
+#uemail_id {
+
+}
+#uemail_adr {
+
+}
+#btn_id_chk {
+
+}
+#btn_email_chk {
+
+}
+
+
+#id_chk_ok {
+
+}
+#eql {
+
+}
+#n_eql {
+
+}
+#email_chk_ok {
+
 }
