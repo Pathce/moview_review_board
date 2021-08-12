@@ -19,53 +19,136 @@ a {
     border-radius: 10px;
     position: relative;
     left: 50%;
-    margin-left: -250px;
+    margin-left: -350px;
     margin-top: 50px;
+}
+.signin_container h1 {
     text-align: center;
 }
+
+/* input */
 #uid {
-    width: 300px;
+    width: 320px;
     height: 30px;
-    margin-left: 10px;
     font-size: 18px;
+    margin: 10px;
+    text-indent: 5px;
+    position: relative;
 }
 #upw {
-    width: 300px;
+    width: 320px;
     height: 30px;
-    margin-left: 10px;
     font-size: 18px;
+    margin: 10px;
+    text-indent: 5px;
 }
 #r_upw {
-    width: 300px;
+    width: 320px;
     height: 30px;
-    margin-left: 10px;
     font-size: 18px;
+    margin: 10px;
+    text-indent: 5px;
 }
 #uname {
-    width: 300px;
+    width: 320px;
     height: 30px;
-    margin-left: 10px;
     font-size: 18px;
+    margin: 10px;
+    text-indent: 5px;
 }
 #uemail_id {
-    width: 135px;
+    width: 145px;
     height: 30px;
-    margin-left: 10px;
     font-size: 18px;
+    margin: 10px 0 10px 10px;
+    text-indent: 5px;
 }
 #uemail_adr {
-    width: 135px;
-    height: 30px;
+    width: 145px;
+    height: 35px;
     font-size: 18px;
+    margin: 10px 10px 10px 0;
+    text-indent: 5px;
 }
+/* btn */
 #btn_id_chk {
-
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
+    background: white;
+    border: 2px solid #d9d9d9;
+    border-radius: 5px;
+    position: relative;
+}
+#btn_id_chk:hover {
+    border: 2px solid #f5f5f5;
+    background: #f5f5f5;
 }
 #btn_email_chk {
-
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
+    background: white;
+    border: 2px solid #d9d9d9;
+    border-radius: 5px;
+}
+#btn_email_chk:hover {
+    border: 2px solid #f5f5f5;
+    background: #f5f5f5;
+}
+#btn_signin {
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
+    background: white;
+    border: 2px solid #d9d9d9;
+    border-radius: 5px;
+}
+#btn_signin:hover {
+    border: 2px solid #f5f5f5;
+    background: #f5f5f5;
+}
+#btn_cancel {
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
+    background: white;
+    border: 2px solid #d9d9d9;
+    border-radius: 5px;
+}
+#btn_cancel:hover {
+    border: 2px solid #f5f5f5;
+    background: #f5f5f5;
 }
 
+#btn_sub {
+    padding: 20px;
+    text-align: center;
+}
 
+/* div */
+.id_input {
+    width: 70%;
+    margin-left: 100px;
+}
+.pw_input {
+    width: 70%;
+    margin-left: 100px;
+}
+.r_pw_input {
+    width: 70%;
+    margin-left: 100px;
+}
+.name_input {
+    width: 70%;
+    margin-left: 100px;
+}
+.email_input {
+    width: 70%;
+    margin-left: 100px;
+}
+
+/* chk string */
 #id_chk_ok {
     font-size: 12px;
 }

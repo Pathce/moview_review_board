@@ -69,6 +69,8 @@ a {
 #review_read #review_title {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    background: white;
+    height: 30px;
 }
 #review_read #movie_title {
     background: white;
@@ -145,7 +147,7 @@ a {
 }
 #review_etc {
     width: 60%;
-    padding : 10px;
+    padding : 10px 5px 5px 10px;
     border: 2px solid #F3F3F3FF;
     border-radius: 5px;
     position: relative;
@@ -153,10 +155,17 @@ a {
     margin-left: -30%;
 }
 #review_etc #pre_review {
+    padding-bottom: 5px;
     font-size: 12px;
+    height: 20px;
+    vertical-align: center;
+    border-bottom: 1px solid #F1F1F1FF;
 }
 #review_etc #next_review {
+    padding-top: 10px;
     font-size: 12px;
+    height: 20px;
+    position: relative;
 }
 
 /* 댓글 */

@@ -1,7 +1,6 @@
 const i_id = document.querySelector('#uid');
 const i_pw = document.querySelector('#upw');
 const i_rpw = document.querySelector('#r_upw');
-const i_name = document.querySelector('#uname');
 const e_id = document.querySelector('#uemail_id');
 const e_adr = document.querySelector('#uemail_adr');
 const eql = document.querySelector('#eql');
@@ -14,6 +13,7 @@ chkPw();
 function chkId() {
     document.querySelector('#id_check').value = false;
     document.querySelector('#id_chk_ok').classList.add(HIDDEN_CLASSNAME);
+    document.querySelector('#id_chk_fail').classList.remove(HIDDEN_CLASSNAME);
 }
 
 function chkPw() {
@@ -35,6 +35,7 @@ function chkPw() {
 function chkEmail() {
     document.querySelector('#email_check').value = false;
     document.querySelector('#email_chk_ok').classList.add(HIDDEN_CLASSNAME);
+    document.querySelector('#email_chk_fail').classList.add(HIDDEN_CLASSNAME);
 }
 
 i_id.addEventListener('keyup', chkId);

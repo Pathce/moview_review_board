@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/signin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/signin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/userInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/userInfo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/signin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/signin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +67,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="advanced.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -114,6 +119,7 @@
       <workItem from="1628677304181" duration="7108000" />
       <workItem from="1628723610957" duration="21007000" />
       <workItem from="1628751266114" duration="7273000" />
+      <workItem from="1628762826380" duration="7612000" />
     </task>
     <servers />
   </component>

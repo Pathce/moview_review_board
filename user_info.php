@@ -86,36 +86,37 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
     <link rel="stylesheet" type="text/css" href="./css/userInfo.css" />
 </head>
 <body>
+<div class="header">
+    <h4><a href="./main.php">메인</a></h4>
+</div>
+<div class="blank"></div>
     <div>
-        <fieldset>
-            <legend>내 정보</legend>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <td><?php echo $user_info['U_ID'] ?></td>
-                </tr>
-                <tr>
-                    <th>E-mail</th>
-                    <td><?php echo $user_info['U_EMAIL'] ?></td>
-                </tr>
-                <tr>
-                    <th>이름</th>
-                    <td><?php echo $user_info['U_NAME'] ?></td>
-                </tr>
-                <tr>
-                    <th>리뷰</th>
-                    <td><?php echo $review_cnt ?></td>
-                </tr>
-                <tr>
-                    <th>댓글</th>
-                    <td><?php echo $comment_cnt ?></td>
-                </tr>
-            </table>
-        </fieldset>
+        <table id="user_table">
+            <tr>
+                <th id="th_id">ID</th>
+                <td id="th_id"><?php echo $user_info['U_ID'] ?></td>
+            </tr>
+            <tr>
+                <th id="th_email">E-mail</th>
+                <td id="th_email"><?php echo $user_info['U_EMAIL'] ?></td>
+            </tr>
+            <tr>
+                <th id="th_name">이름</th>
+                <td id="th_name"><?php echo $user_info['U_NAME'] ?></td>
+            </tr>
+            <tr>
+                <th id="th_review">리뷰</th>
+                <td id="th_review"><?php echo $review_cnt ?></td>
+            </tr>
+            <tr>
+                <th id="th_co">댓글</th>
+                <td id="th_co"><?php echo $comment_cnt ?></td>
+            </tr>
+        </table>
     </div>
-    <div>
+    <div class="user_review">
         <h2>내 리뷰</h2>
-        <table>
+        <table id="review_table">
             <thead>
                 <th>글 번호</th>
                 <th>영화 제목</th>
@@ -140,9 +141,9 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
             <?php } ?>
         </table>
     </div>
-    <div>
+    <div class="user_comment">
         <h2>내 댓글</h2>
-        <table>
+        <table id="comment_table">
             <thead>
                 <th>작성자</th>
                 <th>날짜</th>
@@ -165,9 +166,8 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
             <?php } ?>
         </table>
     </div>
-    <div>
+    <div class="user_chart">
         <h2>내 통계</h2>
-        <div class="user_chart">
             <div class="chart_tabs">
                 <button id="tab01">전체</button>
                 <button id="tab02">리뷰</button>
@@ -176,6 +176,7 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
             <div class="chart_content">
                 <div class="chart01 ">
                     <h3>전체 차트</h3>
+                    <svg id="totChart" width="800" height="400"></svg>
                 </div>
                 <div class="chart02 hidden">
                     <h3>리뷰 차트</h3>
@@ -184,11 +185,9 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
                 <div class="chart03 hidden">
                     <h3>댓글 차트</h3>
                     <svg id="commentChart" width="800" height="400"></svg>
-
                 </div>
             </div>
         </div>
-    </div>
     <div id="comment_data" class="hidden"><?php echo $jsonCArr; ?></div>
     <div id="review_data" class="hidden"><?php echo $jsonRArr; ?></div>
     <script src="./js/userInfo.js"></script>
