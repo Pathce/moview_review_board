@@ -47,10 +47,10 @@ a {
 #write_area table {
     width: 80%;
     min-height: 400px;
-    padding: 15px;
+    padding: 15px 15px 0 15px;
     background: #f3f3f3;
-    border: 2px solid #f3f3f3;
-    border-radius: 10px;
+    /*border: 2px solid #f3f3f3;*/
+    /*border-radius: 10px;*/
     border-spacing: 0;
     text-indent: 10px;
     position: relative;
@@ -61,17 +61,10 @@ a {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-#write_area table tbody td {
+#write_area table tbody #td {
     width: 100%;
     height: 30px;
     padding: 0;
-    background: white;
-    border: 2px solid #f3f3f3;
-}
-#write_area table tbody #content {
-    height: auto;
-    padding-top: 5px;
-    padding-bottom: 5px;
     background: white;
     border: 2px solid #f3f3f3;
 }
@@ -116,4 +109,11 @@ a {
     border: 2px solid #f1f1f1;
     border-radius: 5px;
     background: #f1f1f1;
+}
+
+
+
+/* 에디터 */
+#summer_td {
+    background: white;
 }

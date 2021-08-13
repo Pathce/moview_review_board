@@ -6,14 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/signin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/signin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/userInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/userInfo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/signin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/signin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/review_write.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review_write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chart/mainChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart/mainChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review_write.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review_write_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write_ok.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -120,6 +117,7 @@
       <workItem from="1628723610957" duration="21007000" />
       <workItem from="1628751266114" duration="7273000" />
       <workItem from="1628762826380" duration="7612000" />
+      <workItem from="1628810529574" duration="7402000" />
     </task>
     <servers />
   </component>

@@ -93,7 +93,7 @@ const y = d3.scaleLinear()
 const svg = d3.select('#date_line_graph').append('svg').style('width', width).style('height', height);
 
 function createChart(data, i) {
-        const xAxis = g => g
+    const xAxis = g => g
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x).ticks(width / 90).tickSizeOuter(0));
 

@@ -10,6 +10,19 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title>리뷰 작성</title>
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
+    <!-- include summernote-ko-KR -->
+    <script src="lang/summernote-ko-KR.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./css/review_write.css" />
 </head>
 <body>
@@ -20,23 +33,20 @@ if (!isset($_SESSION['user_id'])) {
     <div class="review_write">
         <h2>리뷰 작성</h2>
         <div id="write_area">
-            <form action="review_write_ok.php" method="post">
+            <form id="postForm" action="review_write_ok.php" method="post">
                 <table>
                     <tbody>
                     <tr>
-                        <td><input name="r_title" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required></td>
+                        <td id="td"><input name="r_title" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" required></td>
                     </tr>
                     <tr>
-                        <td><input name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" required></td>
+                        <td id="td"><input name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" required></td>
                     </tr>
                     <tr>
-                        <td><input name="r_score" id="in_score" placeholder="평점" required></td>
+                        <td id="td"><input name="r_score" id="in_score" placeholder="평점" required></td>
                     </tr>
                     <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td id="content"><textarea name="r_content" id="ucontent" placeholder="내용" required></textarea></td>
+                        <td id="summer_td"><textarea id="summernote" name="contents"></textarea></td>
                     </tr>
                     </tbody>
                 </table>
@@ -47,5 +57,6 @@ if (!isset($_SESSION['user_id'])) {
             </form>
         </div>
     </div>
+<script src="./js/review_write.js"></script>
 </body>
 </html>
