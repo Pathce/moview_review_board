@@ -65,13 +65,14 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     <meta charset="UTF-8">
     <title>메인</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css?after" />
 </head>
 <body>
     <div class="header">
         <form class="login" name="login_form">
             <div class="login_info">
-                <p id="title">영화 리뷰</p>
+                <p id="title">Movie Review</p>
                 <?php
                 if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
                     echo "<p class='user_login'>로그인을 해 주세요. <a href='index.php'>로그인</a> | <a href='signin.php'>회원가입</a></p>";
@@ -191,8 +192,8 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     <div class="chart">
         <a href="stat.php"><button id="btn_tot_chart">종합 통계</button></a>
         <div class="date_line_graph">
-            <h1>날짜 별 댓글 수</h1>
-            <svg id="date_line_graph"></svg>
+            <h1>날짜 별 리뷰 수</h1>
+            <div id="review_date_chart"></div>
         </div>
 <!--        <div class="date_circle_graph">-->
 <!--            <input>-->

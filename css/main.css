@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-
 /* 전체 옵션 */
 * {
     margin: 0 auto;
@@ -57,8 +56,11 @@ a {
 #title {
     width: 200px;
     font-size: 25px;
+    font-weight: bold;
+    color: white;
     position: relative;
     text-align: center;
+    top: 5px;
 }
 
 /* 영화 포스터 목록 */
@@ -197,19 +199,15 @@ a {
 #option_search {
     width: 150px;
     height: 48px;
-    margin-left: 100px;
+    margin-left: 50px;
     font-size: 17px;
     position: relative;
-    left: 100px;
+    left: 90px;
     top: 1px;
     text-align-last: center;
     text-align: center;
     border: 2px solid #d9d9d9;
     border-radius: 5px;
-    /*-webkit-appearance: none;   !* chrome/safari *!*/
-    /*-moz-appearance: none;      !* firefox *!*/
-    /*appearance: none;*/
-    /*background: url("/img/arrow.png") no-repeat 95% 50%;*/
 }
 #input_search {
     padding: 5px;
@@ -219,7 +217,7 @@ a {
     text-indent: 10px;
     position: relative;
     top: 2px;
-    left: 110px;
+    left: 100px;
     border-top: none;
     border-right: none;
     border-left: none;
@@ -232,7 +230,7 @@ a {
     height: 48px;
     position: relative;
     top: 2px;
-    left: 120px;
+    left: 110px;
     font-size: 20px;
     border: 2px solid #f5f5f5;
     border-radius: 5px;
@@ -271,7 +269,7 @@ a {
     border-radius: 5px;
     background: white;
 }
-.chart h1, svg {
+.chart h1, #review_date_chart {
     position: relative;
     left: 50%;
 }
@@ -279,7 +277,7 @@ a {
     width: 300px;
     margin: 5px 0 20px -150px;
 }
-.chart svg {
+.chart #review_date_chart {
     width: 900px;
     height: 500px;
     margin: 5px 0 20px -450px;

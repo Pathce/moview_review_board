@@ -33,7 +33,6 @@ for(let element of date_data) {
         }
     }
 }
-
 for(let g in genre_obj) {
     genre_list.push([g, genre_obj[g]]);
 }
@@ -59,13 +58,7 @@ for(let element of d_data) {
         case genre_rank[4]: genre_date_data[element['genre']][element['date']] = element['cnt']; break;
     }
 }
-
-console.log(genre_date_data);
-console.log(genre_rank[0]);
-console.log(genre_date_data[genre_rank[0]]);
-
 let chart_data = [];
-
 for(let i in genre_date_data) {
     chart_data[i] = [];
     idx = 0;
@@ -74,60 +67,44 @@ for(let i in genre_date_data) {
     }
 }
 
-console.log(chart_data);
+// highchart____________________________________________________________________________________________________________
+
 console.log(chart_data[genre_rank[0]]);
-//________________________________________________________________________
-const width = 800;
-const height = 500;
-const margin = {top: 40, right: 40, bottom: 40, left: 40};
-const data = chart_data[genre_rank[0]];
+console.log(genre_date_data);
+let g_data = Array();
+let g_index = 0;
+let start_date = date_list[0].replace(/[^0-9]/g,'');
 
-const x = d3.scaleTime()
-    .domain(d3.extent(data, d => d.date))
-    .range([margin.left, width - margin.right]);
-
-const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.value)]).nice()
-    .range([height - margin.bottom, margin.top]);
-
-const svg = d3.select('#date_line_graph').append('svg').style('width', width).style('height', height);
-
-function createChart(data, i) {
-    const xAxis = g => g
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x).ticks(width / 90).tickSizeOuter(0));
-
-    const yAxis = g => g
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y))
-        .call(g => g.select(".domain").remove())
-        .call(g => {
-            return g.select(".tick:last-of-type text").clone()
-                .attr("x", 3)
-                .attr("text-anchor", "start")
-                .attr("font-weight", "bold")
-                .attr("font-size", '20px')
-                .text(i)
-        });
-
-    const line = d3.line()
-        .defined(d => !isNaN(d.value))
-        .x(d => x(d.date))
-        .y(d => y(d.value));
-
-    svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1)
-        .attr("stroke-linejoin", "round")
-        .attr("stroke-linecap", "round")
-        .attr("d", line);
-    svg.append('g').call(xAxis);
-    svg.append('g').call(yAxis);
-    return svg;
+for(let element in genre_date_data) {
+    console.log(element);
+    g_data.push({name: element, data: []});
+    g_data[g_index++].data = Object.values(genre_date_data[element]).reverse();
 }
 
-for(let i = 0; i < genre_rank.length; i++) {
-    createChart(chart_data[genre_rank[i]]);
-}
+console.log(g_data);
+
+Highcharts.chart('review_date_chart', {
+    title: {
+        text: '날짜별 리뷰 추이'
+    },
+    subtitle: {
+        text: '최근 리뷰수 랭킹'
+    },
+    yAxis: {
+        title: {
+            text: '리뷰수'
+        }
+    },
+    xAxis: {
+        title: {
+            text: '날짜'
+        }
+    },
+    /* 범례를 우측 세로로 정렬 */
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    series: g_data,
+});

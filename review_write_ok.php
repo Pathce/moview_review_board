@@ -13,6 +13,14 @@ $m_title = addslashes($_POST['m_title']);
 $r_score = $_POST['r_score'];
 $r_content = addslashes($_POST['contents']);
 
+print_r($_POST['files']);
+echo "<br>";
+print_r($_FILES);
+
+//if(isset($_POST['files'])) {
+//    echo "<img src='./img/".$_POST['files']."'></img>";
+//}
+
 $sql = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME='$m_title'");
 
 if($sql->num_rows) {

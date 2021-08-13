@@ -119,9 +119,9 @@ if(!empty($sql_comment)) {
     <div id="comment">
         <h3>댓글</h3>
         <div id="co_write">
-            <form action="comment_ok.php?r_seq=<?php echo $r_seq ?>" method="post">
-                <textarea name="content"></textarea>
-                <button id="btn_c_write">작성</button>
+            <form id="comment_form" action="comment_ok.php?r_seq=<?php echo $r_seq ?>" method="post">
+                <textarea id="txt_comment" name="content"></textarea>
+                <button type="submit" id="btn_c_write">작성</button>
             </form>
         </div>
         <div id="comment_list">

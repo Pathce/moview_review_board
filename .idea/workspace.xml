@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/modify.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/modify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/stat.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/stat.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chart/mainChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart/mainChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chart/statChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart/statChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/review.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/review_write.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/review_write.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modify_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/modify_ok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review_write_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write_ok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/saveImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stat.php" beforeDir="false" afterPath="$PROJECT_DIR$/stat.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +71,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -121,7 +127,8 @@
       <workItem from="1628751266114" duration="7273000" />
       <workItem from="1628762826380" duration="7612000" />
       <workItem from="1628810529574" duration="9003000" />
-      <workItem from="1628822391148" duration="4203000" />
+      <workItem from="1628822391148" duration="8593000" />
+      <workItem from="1628832142249" duration="4297000" />
     </task>
     <servers />
   </component>
