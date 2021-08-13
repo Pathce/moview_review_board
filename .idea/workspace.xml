@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/css/modify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/modify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/review_write.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review_write.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chart/mainChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart/mainChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review_write.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review_write_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_write_ok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/review_write.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/review_write.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modify_ok.php" beforeDir="false" afterPath="$PROJECT_DIR$/modify_ok.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -69,6 +71,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Apache24\htdocs\moview_review_board\css" />
       <recent name="C:\Apache24\htdocs\moview_review_board" />
       <recent name="C:\Apache24\htdocs\moview_review_board\php" />
     </key>
@@ -117,7 +120,8 @@
       <workItem from="1628723610957" duration="21007000" />
       <workItem from="1628751266114" duration="7273000" />
       <workItem from="1628762826380" duration="7612000" />
-      <workItem from="1628810529574" duration="7402000" />
+      <workItem from="1628810529574" duration="9003000" />
+      <workItem from="1628822391148" duration="4203000" />
     </task>
     <servers />
   </component>

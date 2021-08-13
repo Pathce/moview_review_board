@@ -58,12 +58,12 @@ if(!empty($sql_comment)) {
         <table>
             <thead>
             <td id="review_title">
-                <?php echo stripslashes($review['R_SUBJECT']); ?>
+                <?php echo $review['R_SUBJECT']; ?>
             </td>
             </thead>
             <tbody>
             <tr>
-                <td id="movie_title"><?php echo stripslashes($movie['M_NAME']); ?></td>
+                <td id="movie_title"><?php echo $movie['M_NAME']; ?></td>
             </tr>
             <tr>
                 <td id="score"><?php echo $review['R_SCORE']; ?></td>
@@ -78,7 +78,7 @@ if(!empty($sql_comment)) {
                 </td>
             </tr>
             <tr>
-                <td id="review_content"><?php echo stripslashes($review['R_CONTENT']); ?></td>
+                <td id="review_content"><?php echo ($review['R_CONTENT']); ?></td>
             </tr>
             </tbody>
         </table>
@@ -100,7 +100,7 @@ if(!empty($sql_comment)) {
             <div id="pre_review">
                 이전 <a<?php
                 if($pre_review) {
-                    echo " href='./review.php?r_seq=".$pre_review['R_SEQ']."'>".stripslashes($pre_review['R_SUBJECT']);
+                    echo " href='./review.php?r_seq=".$pre_review['R_SEQ']."'>".$pre_review['R_SUBJECT'];
                 } else {
                 ?>>게시물이 존재하지 않습니다.
                     <?php }
@@ -109,7 +109,7 @@ if(!empty($sql_comment)) {
             <div id="next_review">
                 다음 <a<?php
                 if($next_review) {
-                    echo " href='./review.php?r_seq=".$next_review['R_SEQ']."'>".stripslashes($next_review['R_SUBJECT']);
+                    echo " href='./review.php?r_seq=".$next_review['R_SEQ']."'>".$next_review['R_SUBJECT'];
                 } else {
                 ?>>게시물이 존재하지 않습니다.
                     <?php }
@@ -129,7 +129,7 @@ if(!empty($sql_comment)) {
             foreach($cArray as $comment) {
                 ?><div id="co">
                 <div id="co_id"><?php echo $comment['u_id']; ?></div>
-                <div id="co_content"><?php echo stripslashes($comment['c_comment']); ?></div>
+                <div id="co_content"><?php echo $comment['c_comment']; ?></div>
                 <div id="co_date"><?php echo $comment['c_date']; ?></div>
                 <?php
                 if(isset($_SESSION) && $_SESSION['user_id'] == $comment['u_id']) { ?>

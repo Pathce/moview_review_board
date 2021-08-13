@@ -12,7 +12,20 @@ include $_SERVER['DOCUMENT_ROOT']."./db.php";
 <head>
     <meta charset="UTF-8">
     <title>리뷰 수정</title>
-    <link rel="stylesheet" type="text/css" href="./css/review_write.css" />
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
+    <!-- include summernote-ko-KR -->
+    <script src="lang/summernote-ko-KR.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/modify.css" />
 </head>
 <body>
 <?php
@@ -26,28 +39,28 @@ if (!isset($_SESSION['user_id'])) {
     <h1><a href="./review_board.php">리뷰 게시판</a></h1>
     <h4>리뷰 수정</h4>
     <div id="write_area">
-        <form action="modify_ok.php?r_seq=<?php echo $r_seq; ?>" method="post">
+        <form id="postForm" action="modify_ok.php?r_seq=<?php echo $r_seq; ?>" method="post">
             <div id="in_title">
-                <textarea name="r_title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" rows="1" required><?php echo stripslashes($review['R_TITLE']); ?></textarea>
+                <textarea name="r_title" id="utitle" rows="1" cols="55" placeholder="리뷰 제목" maxlength="100" rows="1" required><?php echo $review['R_TITLE']; ?></textarea>
             </div>
             <div class="wi_line"></div>
             <div id="in_name">
-                <textarea name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" rows="1" required><?php echo stripslashes($review['M_TITLE']); ?></textarea>
+                <textarea name="m_title" id="mtitle" rows="1" cols="55" placeholder="영화 제목" maxlength="100" rows="1" required><?php echo $review['M_TITLE']; ?></textarea>
             </div>
             <div class="wi_line"></div>
             <div class="in_score">
                 <textarea name="r_score" id="in_score" placeholder="평점" rows="1"><?php echo $review['R_SCORE']; ?></textarea>
             </div>
-            <div class="wi_line"></div>
             <div id="in_content">
-                <textarea name="r_content" id="ucontent" placeholder="내용" required><?php echo stripslashes($review['R_CONTENT']); ?></textarea>
+                <textarea id="summernote" name="contents"><?php echo $review['R_CONTENT']; ?></textarea>
             </div>
             <div class="btn_sub">
-                <button type="submit">작성하기</button>
+                <button id="btn_submit" type="submit">작성</button>
+                <a href="./review.php?r_seq=<?php echo $r_seq; ?>"><button id="btn_cancel" type="button">취소</button><a/>
             </div>
         </form>
     </div>
 </div>
-<script src="./js/review.js"></script>
+<script src="./js/modify.js"></script>
 </body>
 </html>
