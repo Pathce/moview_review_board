@@ -5,9 +5,6 @@
     margin: 0 auto;
     padding: 0;
     font-family: 'Malgun gothic', 'Sans-Serif', 'Arial';
-    /*box-sizing: border-box;*/
-    /*-webkit-box-sizing: border-box;*/
-    /*-moz-box-sizing: border-box;*/
 }
 
 /* 공통 옵션 */
@@ -281,6 +278,9 @@ a {
     width: 900px;
     height: 500px;
     margin: 5px 0 20px -450px;
+}
+.date_line_graph h1 {
+    text-align: center;
 }
 #btn_tot_chart {
     width: 150px;

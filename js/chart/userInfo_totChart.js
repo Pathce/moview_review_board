@@ -7,8 +7,6 @@ comment_data = comment_data.replaceAll('["', '');
 comment_data = comment_data.replaceAll('"]', '');
 comment_data = Object.entries(JSON.parse(comment_data));
 
-let t_data = [];
-
 let r_data = [];
 for (let element of review_data) r_data.push({name: element[0], value: element[1]});
 if(r_data.length > 5) r_data = r_data.slice(0, 5);
@@ -20,42 +18,6 @@ if(c_data.length > 5) c_data = c_data.slice(0, 5);
 const width = 800;
 const height = 400;
 const margin = {top: 40, left: 40, bottom: 40, right: 40};
-
-console.log(c_data);
-
-// tot____________________________________________________________________________________
-const t_x = d3.scaleBand()
-    .domain(t_data.map(d => d.name))
-    .range([margin.left, width - margin.right])
-    .padding(0.2);
-
-const t_y = d3.scaleLinear()
-    .domain([0, d3.max(t_data, d => d.value)]).nice()
-    .range([height - margin.bottom, margin.top]);
-
-const txAxis = g => g
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(d3.axisBottom(t_x)
-        .tickSizeOuter(0));
-
-const tyAxis = g => g
-    .attr('transform', `translate(${margin.left}, 0)`)
-    .call(d3.axisLeft(t_y))
-    .call(g => g.select('.domain').remove());
-
-const t_svg = d3.select('#totChart').append('svg').style('width', width).style('height', height);
-
-t_svg.append('g').call(txAxis);
-t_svg.append('g').call(tyAxis);
-t_svg.append('g')
-    .attr('fill', 'steelblue')
-    .selectAll('rect').data(t_data).enter().append('rect')
-    .attr('x', d => t_x(d.name))
-    .attr('y', d => t_y(d.value))
-    .attr('height', d => t_y(0) - t_y(d.value))
-    .attr('width', t_x.bandwidth());
-
-t_svg.node();
 
 // review_________________________________________________________________________________
 const r_x = d3.scaleBand()

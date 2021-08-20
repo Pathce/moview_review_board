@@ -85,20 +85,21 @@ console.log(g_data);
 
 Highcharts.chart('review_date_chart', {
     title: {
-        text: '날짜별 리뷰 추이'
+        text: '장르별 리뷰'
     },
     subtitle: {
-        text: '최근 리뷰수 랭킹'
+        text: ''
     },
     yAxis: {
         title: {
-            text: '리뷰수'
+            text: ' '
         }
     },
     xAxis: {
         title: {
             text: '날짜'
-        }
+        },
+        categories: date_list
     },
     /* 범례를 우측 세로로 정렬 */
     legend: {

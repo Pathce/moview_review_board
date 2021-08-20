@@ -31,26 +31,26 @@ if(!empty($_POST)) {
     <form method="post" name="signin_form" action="signin_ok.php">
         <table>
             <div class="id_input">
-                <input type="text" name="id" id="uid" required placeholder="ID" value='<?php echo $id; ?>'>
+                <input type="text" name="id" id="uid" placeholder="ID" value='<?php echo $id; ?>'>
                 <button type="submit" id="btn_id_chk" formaction="id_chk.php" formmethod="post">ID 확인</button>
                 <input class="hidden" id="id_check" name="id_check" value=<?php echo $id_check; ?>>
                 <div id="id_chk_ok" <?php if(!$id_check) echo 'class="hidden"'; ?>>사용 가능한 ID 입니다.</div>
                 <p id="id_chk_fail" <?php if($id_check) echo 'class="hidden"'; ?>> </p>
             </div>
             <div class="pw_input">
-                <input type="password" name="pw" id="upw" required placeholder="PW" value='<?php echo $pw; ?>'>
+                <input type="password" name="pw" id="upw" placeholder="PW" value='<?php echo $pw; ?>'>
             </div>
             <div class="r_pw_input">
-                <input type="password" name="rpw" id="r_upw" required placeholder="PW 확인" value='<?php echo $rpw; ?>'>
+                <input type="password" name="rpw" id="r_upw" placeholder="PW 확인" value='<?php echo $rpw; ?>'>
                 <div id="eql" class="hidden">사용 가능합니다.</div>
                 <div id="n_eql" class="">비밀번호가 일치하지 않습니다.</div>
                 <input class="hidden" id="pw_check" name="pw_check" value=<?php echo $pw_check; ?>>
             </div>
             <div class="name_input">
-                <input type="text" name="name" id="uname" required placeholder="이름" value='<?php echo $name; ?>'>
+                <input type="text" name="name" id="uname" placeholder="이름" value='<?php echo $name; ?>'>
             </div>
             <div class="email_input">
-                <input type="text" name="email" id="uemail_id" required placeholder="이메일" value='<?php echo $email; ?>'>
+                <input type="text" name="email" id="uemail_id" placeholder="이메일" value='<?php echo $email; ?>'>
                 @
                 <select name="emadress" id="uemail_adr">
                     <option value="example.com" <?php if($emadress == 'example.com') echo "SELECTED"; ?>>example.com</option>
@@ -64,7 +64,7 @@ if(!empty($_POST)) {
             </div>
             <div id="btn_sub">
                 <input id="btn_signin" type="submit" value="회원가입" >
-                <a href="main.php"><button id="btn_cancel" type="button">취소</button></a>
+                <a href="index.php"><button id="btn_cancel" type="button">취소</button></a>
             </div>
     </form>
 </div>

@@ -35,6 +35,11 @@ if(!empty($sql_comment)) {
         ];
     }
 }
+$session_id = "";
+if(isset($_SESSION['user_id'])) {
+    $session_id = $_SESSION['user_id'];
+}
+
 ?>
 <!DOCTYPE html>
 <head>
@@ -132,7 +137,7 @@ if(!empty($sql_comment)) {
                 <div id="co_content"><?php echo $comment['c_comment']; ?></div>
                 <div id="co_date"><?php echo $comment['c_date']; ?></div>
                 <?php
-                if(isset($_SESSION) && $_SESSION['user_id'] == $comment['u_id']) { ?>
+                if($session_id == $comment['u_id']) { ?>
                     <a href="./delete_co.php?c_seq=<?php echo $comment['c_seq'] ?>"><p id="co_delete">삭제</p></a>
                 <?php }?>
                 </div>

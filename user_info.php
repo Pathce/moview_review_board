@@ -83,6 +83,10 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
     <meta charset="UTF-8">
     <title>내 정보</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/userInfo.css" />
 </head>
 <body>
@@ -169,21 +173,16 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
     <div class="user_chart">
         <h2>내 통계</h2>
             <div class="chart_tabs">
-                <button id="tab01">전체</button>
                 <button id="tab02">리뷰</button>
                 <button id="tab03">댓글</button>
             </div>
             <div class="chart_content">
-                <div class="chart01 ">
-                    <h3>전체 차트</h3>
-                    <svg id="totChart" width="800" height="400"></svg>
-                </div>
-                <div class="chart02 hidden">
-                    <h3>리뷰 차트</h3>
+                <div class="chart02">
+                    <h3>장르별 리뷰 순위</h3>
                     <svg id="reviewChart" width="800" height="400"></svg>
                 </div>
                 <div class="chart03 hidden">
-                    <h3>댓글 차트</h3>
+                    <h3>장르별 댓글 순위</h3>
                     <svg id="commentChart" width="800" height="400"></svg>
                 </div>
             </div>

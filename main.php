@@ -90,6 +90,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     <div>
         <table id="movie_poster_list">
             <tbody>
+            <tr><td><h2>상영중 영화 포스터</h2></td></tr>
             <tr>
                 <td><a href="#"><img id="img_m1" src="./img/movie1.jpg" alt="movie_img1"/></a></td>
                 <td><a href="#"><img id="img_m2" src="./img/movie2.jpg" alt="movie_img2"/></a></td>
@@ -109,6 +110,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     </div>
     <div class="review_container">
         <div class="review_tabs">
+            <div><h2>최근 리뷰</h2></div>
             <div id="tab001" class="clicked">
                 <div id="eff1" class="eff-1"></div>
                 <a>인기</a>
@@ -192,30 +194,9 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     <div class="chart">
         <a href="stat.php"><button id="btn_tot_chart">종합 통계</button></a>
         <div class="date_line_graph">
-            <h1>날짜 별 리뷰 수</h1>
+            <h1>장르별 리뷰 수</h1>
             <div id="review_date_chart"></div>
         </div>
-<!--        <div class="date_circle_graph">-->
-<!--            <input>-->
-<!--            <button>검색</button>-->
-<!--            <table>-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th width="50">순위</th>-->
-<!--                    <th width="120">단어</th>-->
-<!--                    <th width="100">횟수</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr>-->
-<!--                    <td>1</td>-->
-<!--                    <td>피곤해</td>-->
-<!--                    <td>100</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--            <h1>날짜 별 원형 그래프 들어갈 자리</h1>-->
-<!--        </div>-->
     </div>
     <div class="footer">
 
