@@ -1,6 +1,7 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT']."./db.php";
 session_start();
+
 $r_seq = $_GET['r_seq'];
 $cur_seq = (int)$r_seq;
 $r_sql = query("SELECT * FROM review WHERE R_SEQ='".$r_seq."'");
@@ -137,7 +138,7 @@ if(isset($_SESSION['user_id'])) {
         <div id="comment_list">
             <?php
             foreach($cArray as $comment) {
-                ?><div id="co">
+                ?><div <?php if($session_id == $comment['u_id']) {echo "class='user'";} ?> id="co">
                 <div id="co_id"><?php echo $comment['u_id']; ?></div>
                 <div id="co_content"><?php echo $comment['c_comment']; ?></div>
                 <div id="co_date"><?php echo $comment['c_date']; ?></div>

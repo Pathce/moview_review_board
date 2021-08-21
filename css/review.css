@@ -236,3 +236,7 @@ body {
     bottom: 30px;
     right: 10px;
 }
+
+.user {
+    background-color: lightyellow;
+}
