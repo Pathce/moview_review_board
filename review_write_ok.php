@@ -22,8 +22,12 @@ print_r($_FILES);
 //}
 
 $sql = query("SELECT M_SEQ FROM MOVIE_INFO WHERE M_NAME='$m_title'");
-
-if($sql->num_rows) {
+if(mb_strlen($r_content) > 1024) {
+    echo "<script>
+    alert('본문 내용은 1024자를 넘길 수 없습니다.');
+    history.back();
+    </script>";
+} else if($sql->num_rows) {
     $m_seq = $sql->fetch_assoc()['M_SEQ'];
     $sql_insert = query("INSERT INTO REVIEW(M_SEQ, R_SUBJECT, R_CONTENT, UR_ID, R_SCORE, R_REC)
 VALUES(".$m_seq.", "."'".$r_title."', "."'".$r_content."', "."'".$u_id."', ".$r_score.", "."0)");
