@@ -6,9 +6,6 @@ body {
     width: 100%;
     margin: 0;
 }
-a {
-    text-decoration: none;
-}
 
 /* 헤더 */
 .header {

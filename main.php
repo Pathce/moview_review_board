@@ -3,8 +3,8 @@
 <?php
 session_start();
 
-$totArray = $popArray = $dateArray = Array();
-$popIndex = $totIndex = $dateIndex= 0;
+$totArray = $popArray = $dateArray = $posterArray = Array();
+$popIndex = $totIndex = $dateIndex = $posterIndex = 0;
 
 $sql_review = query("
 SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
@@ -22,6 +22,9 @@ FROM GENRE_LIST GL, GENRE_INFO GI, MOVIE_INFO M, REVIEW R
 WHERE GL.G_SEQ = GI.G_SEQ AND GL.M_SEQ = M.M_SEQ AND R.M_SEQ = M.M_SEQ
 GROUP BY G_NAME, R_DATE 
 ORDER BY G_NAME, R_DATE DESC");
+$sql_poster = query("
+SELECT *
+FROM MOVIE_POSTER");
 
 while($review = $sql_review->fetch_assoc()) {
     $r_seq = $review['R_SEQ'];
@@ -58,6 +61,12 @@ while($result = $sql_date_chart->fetch_assoc()) {
             "cnt"=>$result['CNT']
     ];
 }
+while($result = $sql_poster->fetch_assoc()) {
+    $posterArray[$posterIndex++] = [
+            "movie_name"=>$result['movie_name'],
+            "poster_url"=>$result['poster_url']
+    ];
+}
 $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
 ?>
 <html lang="en">
@@ -92,18 +101,18 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
             <tbody>
             <tr><td><h2>상영중 영화 포스터</h2></td></tr>
             <tr>
-                <td><a href="#"><img id="img_m1" src="./img/movie1.jpg" alt="movie_img1"/></a></td>
-                <td><a href="#"><img id="img_m2" src="./img/movie2.jpg" alt="movie_img2"/></a></td>
-                <td><a href="#"><img id="img_m3" src="./img/movie3.jpg" alt="movie_img3"/></a></td>
-                <td><a href="#"><img id="img_m4" src="./img/movie4.jpg" alt="movie_img4"/></a></td>
-                <td><a href="#"><img id="img_m5" src="./img/movie5.jpg" alt="movie_img5"/></a></td>
+                <td><a href="#"><img id="img_m1" src="<?php echo $posterArray[0]['poster_url'] ?>" alt="<?php echo $posterArray[0]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m2" src="<?php echo $posterArray[1]['poster_url'] ?>" alt="<?php echo $posterArray[1]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m3" src="<?php echo $posterArray[2]['poster_url'] ?>" alt="<?php echo $posterArray[2]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m4" src="<?php echo $posterArray[3]['poster_url'] ?>" alt="<?php echo $posterArray[3]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m5" src="<?php echo $posterArray[4]['poster_url'] ?>" alt="<?php echo $posterArray[4]['movie_name'] ?>"/></a></td>
             </tr>
             <tr>
-                <td><a href="#"><img id="img_m6" src="./img/movie6.jpg" alt="movie_img6"/></a></td>
-                <td><a href="#"><img id="img_m7" src="./img/movie7.jpg" alt="movie_img7"/></a></td>
-                <td><a href="#"><img id="img_m8" src="./img/movie8.jpg" alt="movie_img8"/></a></td>
-                <td><a href="#"><img id="img_m9" src="./img/movie9.jpg" alt="movie_img9"/></a></td>
-                <td><a href="#"><img id="img_m10" src="./img/movie10.jpg" alt="movie_img10"/></a></td>
+                <td><a href="#"><img id="img_m6" src="<?php echo $posterArray[5]['poster_url'] ?>" alt="<?php echo $posterArray[5]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m7" src="<?php echo $posterArray[6]['poster_url'] ?>" alt="<?php echo $posterArray[6]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m8" src="<?php echo $posterArray[7]['poster_url'] ?>" alt="<?php echo $posterArray[7]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m9" src="<?php echo $posterArray[8]['poster_url'] ?>" alt="<?php echo $posterArray[8]['movie_name'] ?>"/></a></td>
+                <td><a href="#"><img id="img_m10" src="<?php echo $posterArray[9]['poster_url'] ?>" alt="<?php echo $posterArray[9]['movie_name'] ?>"/></a></td>
             </tr>
             </tbody>
         </table>

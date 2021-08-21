@@ -51,19 +51,8 @@ function onClickTab2() {
 
 function onClickImg(event) {
     console.log(event.target.id);
-    let link = "";
-    switch (event.target.id) {
-        case 'img_m1': link = 'review_board.php?option=영화' + '&&search=' + "모가디슈"; break;
-        case 'img_m2': link = 'review_board.php?option=영화' + '&&search=' + "더 수어사이드 스쿼드"; break;
-        case 'img_m3': link = 'review_board.php?option=영화' + '&&search=' + "방법:재차의"; break;
-        case 'img_m4': link = 'review_board.php?option=영화' + '&&search=' + "보스 베이비 2"; break;
-        case 'img_m5': link = 'review_board.php?option=영화' + '&&search=' + "정글 크루즈"; break;
-        case 'img_m6': link = 'review_board.php?option=영화' + '&&search=' + "더 그레이트 샤크"; break;
-        case 'img_m7': link = 'review_board.php?option=영화' + '&&search=' + "그린나이트"; break;
-        case 'img_m8': link = 'review_board.php?option=영화' + '&&search=' + "도라에몽 진구의 신공룡"; break;
-        case 'img_m9': link = 'review_board.php?option=영화' + '&&search=' + "블랙 위도우"; break;
-        case 'img_m10': link = 'review_board.php?option=영화' + '&&search=' + "피닉스"; break;
-    }
+    let alt = event.target.alt;
+    let link = 'review_board.php?option=영화' + '&&search=' + `${alt}`;
     location.href = link;
 }
 

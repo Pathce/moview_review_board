@@ -22,9 +22,6 @@ body {
 .header {
     width: 100%
 }
-a {
-    text-decoration: none;
-}
 
 /* 로그인, 로그아웃, 회원가입 */
 .login {
@@ -76,6 +73,7 @@ a {
     width: auto;
     height: auto;
     resize: both;
+    min-width: 300px;
     max-width: 300px;
     height: auto;
     margin: 10px 0;

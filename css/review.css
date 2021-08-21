@@ -3,9 +3,6 @@ body {
     width: 100%;
     margin: 0 0 0 0;
 }
-a {
-    text-decoration: none;
-}
 .hidden {
     display: none;
 }
@@ -66,7 +63,8 @@ a {
     background: white;
     border: 2px solid #f3f3f3;
 }
-#review_read #review_title {
+#review_read thead td {
+    border: 2px solid #f3f3f3;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: white;

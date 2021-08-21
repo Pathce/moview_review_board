@@ -62,28 +62,33 @@ if(isset($_SESSION['user_id'])) {
         <h2><a href="./review_board.php">리뷰 게시판</a></h2>
         <table>
             <thead>
+            <td width="150px" align="center">리뷰 제목</td>
             <td id="review_title">
                 <?php echo $review['R_SUBJECT']; ?>
             </td>
             </thead>
             <tbody>
             <tr>
+                <td align="center">영화 제목</td>
                 <td id="movie_title"><?php echo $movie['M_NAME']; ?></td>
             </tr>
             <tr>
+                <td align="center">평점</td>
                 <td id="score"><?php echo $review['R_SCORE']; ?></td>
             </tr>
             <tr>
-                <td id="user_info"><?php echo "작성자 : ".$review['UR_ID']; ?></td>
+                <td align="center">작성자</td>
+                <td id="user_info"><?php echo $review['UR_ID']; ?></td>
             </tr>
             <tr>
+                <td align="center">작성일자</td>
                 <td id="write_date">
                     <?php echo $r_date." "; ?>
                     <?php echo $r_time; ?>
                 </td>
             </tr>
             <tr>
-                <td id="review_content"><?php echo ($review['R_CONTENT']); ?></td>
+                <td id="review_content" colspan="2"><?php echo ($review['R_CONTENT']); ?></td>
             </tr>
             </tbody>
         </table>
