@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e261380-079c-48a7-996b-aebc39b45ce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/movie_crawler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/modify.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/modify.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/reviewBoard.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/reviewBoard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/review_write.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/review_write.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/signin.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/signin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/stat.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/stat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/userInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/userInfo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review_board.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_board.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +121,7 @@
       <workItem from="1628832142249" duration="6266000" />
       <workItem from="1629420307346" duration="2021000" />
       <workItem from="1629422382930" duration="5117000" />
-      <workItem from="1629499263743" duration="9805000" />
+      <workItem from="1629499263743" duration="11730000" />
     </task>
     <servers />
   </component>

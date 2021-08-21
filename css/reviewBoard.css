@@ -111,6 +111,10 @@ body {
     height: 20px;
     font-size: 14px;
 }
+#review_table tbody #content {
+    text-align: left;
+    padding-left: 10px;
+}
 
 /* 페이지 */
 #page_num {
