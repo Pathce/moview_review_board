@@ -19,7 +19,22 @@ $pw_chk = $_POST['pw_check'];
 $email_chk = $_POST['email_check'];
 
 $sql = query("SELECT * FROM USER_INFO WHERE UR_ID='$id'");
-if($sql->num_rows){ ?>
+if(preg_match("/[^a-zA-Z0-9]/", $id)) {
+    ?>
+    <script>alert("영문자, 숫자 외의 문자는 사용할 수 없습니다.")</script>
+    <?php
+    $id_chk = false;
+} else if(strlen($id) < 4 || strlen($id) > 13) {
+    ?>
+    <script>alert("ID의 길이는 4 ~ 13자 이어야 합니다.")</script>
+    <?php
+    $id_chk = false;
+} else if(!(preg_match("/[a-zA-z]/", $id))) {
+    ?>
+    <script>alert("영문자 또는 영문자+숫자 조합을 사용해야 합니다.")</script>
+    <?php
+    $id_chk = false;
+} else if($sql->num_rows){ ?>
     <script>alert("중복된 ID 입니다.");</script>
 <?php
     $id_chk = false;
