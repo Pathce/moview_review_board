@@ -115,6 +115,9 @@ body {
     text-align: left;
     padding-left: 10px;
 }
+#review_table tbody #user {
+    background-color: lightyellow;
+}
 
 /* 페이지 */
 #page_num {

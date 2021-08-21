@@ -5,6 +5,11 @@ $totIndex = 0;
 $option = "";
 $search = "";
 
+$user_id = "";
+if(isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
+
 if(isset($_GET['search'])) {
     $option = $_GET['option'];
     $search = $_GET['search'];
@@ -35,6 +40,7 @@ if(!empty($sql_review)){
         $sql_comment = query("SELECT * FROM REVIEW_COMMENT WHERE R_SEQ='$r_seq'");
         $r_comment = $sql_comment->num_rows;
         $totArray[$totIndex++] = [
+                'r_seq'=>$review['R_SEQ'],
                 'r_timestamp'=>$review['R_TIMESTAMP'],
                 'u_id'=>$review['U_ID'],
                 'm_title'=>stripslashes($review['M_TITLE']),
@@ -110,7 +116,11 @@ if($row_num - $start_num < $list) {
                     $arr = $totArray[$i];
                     ?>
                     <tbody>
-                    <tr>
+                    <tr <?php
+                    if($user_id == $arr['u_id']) {
+                        echo "id='user'";
+                    }
+                    ?>>
                         <td><?php echo $arr['r_timestamp'] ?></td>
                         <td><?php echo $arr['u_id'] ?></td>
                         <td><?php echo $arr['m_title'] ?></td>
