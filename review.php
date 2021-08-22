@@ -144,7 +144,7 @@ if(isset($_SESSION['user_id'])) {
                 <div id="co_date"><?php echo $comment['c_date']; ?></div>
                 <?php
                 if($session_id == $comment['u_id']) { ?>
-                    <a href="./delete_co.php?c_seq=<?php echo $comment['c_seq'] ?>"><p id="co_delete">삭제</p></a>
+                    <a href="#"><p id="co_delete" class="<?php echo $comment['c_seq'] ?>">삭제</p></a>
                 <?php }?>
                 </div>
                 <?php

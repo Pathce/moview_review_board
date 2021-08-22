@@ -50,7 +50,6 @@ function onClickTab2() {
 }
 
 function onClickImg(event) {
-    console.log(event.target.id);
     let alt = event.target.alt;
     let link = 'review_board.php?option=영화' + '&&search=' + `${alt}`;
     location.href = link;
