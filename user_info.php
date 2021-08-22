@@ -43,7 +43,7 @@ while($review = $sql_review->fetch_assoc()) {
 }
 
 $sql_comment = query("
-SELECT C.UR_ID U_ID, DATE_FORMAT(C.CO_TIMESTAMP, '%Y-%m-%d') C_DATE, M.M_NAME M_TITLE, R.R_SUBJECT R_TITLE, C.R_COMMENT R_COMMENT
+SELECT C.UR_ID U_ID, DATE_FORMAT(C.CO_TIMESTAMP, '%Y-%m-%d') C_DATE, M.M_NAME M_TITLE, R.R_SUBJECT R_TITLE, C.R_COMMENT R_COMMENT, C.R_SEQ R_SEQ
 FROM REVIEW_COMMENT C, REVIEW R, MOVIE_INFO M
 WHERE C.R_SEQ = R.R_SEQ AND R.M_SEQ = M.M_SEQ AND C.UR_ID='$user_id' 
 ORDER BY C.R_SEQ DESC LIMIT 0, 5");
@@ -53,7 +53,8 @@ while($comment = $sql_comment->fetch_assoc()) {
         'c_date'=>$comment['C_DATE'],
         'm_title'=>stripslashes($comment['M_TITLE']),
         'r_title'=>stripslashes($comment['R_TITLE']),
-        'r_comment'=>stripslashes($comment['R_COMMENT'])];
+        'r_comment'=>stripslashes($comment['R_COMMENT']),
+        'r_seq'=>$comment['R_SEQ']];
 }
 
 $sql_r_chart = query("SELECT R.UR_ID U_ID, GI.G_NAME GENRE, COUNT(GI.G_NAME) CNT
@@ -136,7 +137,7 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
             <tr>
                 <td><?php echo $arr['r_seq']; ?></td>
                 <td><?php echo $arr['m_title']; ?></td>
-                <td><?php echo $arr['r_title']; ?></td>
+                <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title']; ?></a></td>
                 <td><?php echo $arr['r_score']; ?></td>
                 <td><?php echo $arr['r_rec']; ?></td>
                 <td><?php echo $arr['r_co']; ?></td>
@@ -163,7 +164,7 @@ $jsonCArr = json_encode($ccArray, JSON_UNESCAPED_UNICODE);
                     <td><?php echo $arr['u_id']; ?></td>
                     <td><?php echo $arr['c_date']; ?></td>
                     <td><?php echo $arr['m_title']; ?></td>
-                    <td><?php echo $arr['r_title']; ?></td>
+                    <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title']; ?></a></td>
                     <td><?php echo $arr['r_comment']; ?></td>
                 </tr>
                 </tbody>

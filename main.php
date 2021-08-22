@@ -7,12 +7,12 @@ $totArray = $popArray = $dateArray = $posterArray = Array();
 $popIndex = $totIndex = $dateIndex = $posterIndex = 0;
 
 $sql_review = query("
-SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+SELECT R.R_SEQ R_SEQ, R.R_TIMESTAMP R_TIMESTAMP, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
 FROM REVIEW R, MOVIE_INFO M
 WHERE R.M_SEQ = M.M_SEQ 
 ORDER BY R.R_SEQ DESC LIMIT 0, 5");
 $sql_pop_review = query("
-SELECT R.R_SEQ R_SEQ, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
+SELECT R.R_SEQ R_SEQ, R.R_TIMESTAMP R_TIMESTAMP, R.UR_ID U_ID, R.R_SUBJECT R_TITLE, M.M_NAME M_TITLE, R.R_SCORE R_SCORE, R.R_REC R_REC
 FROM REVIEW R, MOVIE_INFO M
 WHERE R.M_SEQ = M.M_SEQ AND R_REC >= 5 
 ORDER BY R_SEQ DESC LIMIT 0, 5");
@@ -32,6 +32,7 @@ while($review = $sql_review->fetch_assoc()) {
     $r_comment = $sql_comment->num_rows;
     $totArray[$totIndex++] = [
             'r_seq'=>$review['R_SEQ'],
+            'r_timestamp'=>$review['R_TIMESTAMP'],
             'u_id'=>$review['U_ID'],
             'm_title'=>stripslashes($review['M_TITLE']),
             'r_title'=>stripslashes($review['R_TITLE']),
@@ -46,6 +47,7 @@ while($review = $sql_pop_review->fetch_assoc()) {
     $r_comment = $sql_comment->num_rows;
     $popArray[$popIndex++] = [
             'r_seq'=>$review['R_SEQ'],
+            'r_timestamp'=>$review['R_TIMESTAMP'],
             'u_id'=>$review['U_ID'],
             'm_title'=>stripslashes($review['M_TITLE']),
             'r_title'=>stripslashes($review['R_TITLE']),
@@ -141,10 +143,10 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
                 <table class="review_list pop">
                     <thead>
                     <tr>
-                        <th width="130">글 번호</th>
+                        <th width="200">작성일시</th>
                         <th width="150">작성자</th>
-                        <th width="250">영화 제목</th>
-                        <th width="900">리뷰 제목</th>
+                        <th width="280">영화 제목</th>
+                        <th width="800">리뷰 제목</th>
                         <th width="100">평점</th>
                         <th width="150">추천 수</th>
                         <th width="150">댓글 수</th>
@@ -155,7 +157,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
                         ?>
                         <tbody>
                         <tr>
-                            <td><?php echo $arr['r_seq']; ?></td>
+                            <td><?php echo $arr['r_timestamp']; ?></td>
                             <td><?php echo $arr['u_id']; ?></td>
                             <td><?php echo $arr['m_title']; ?></td>
                             <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title']; ?></a></td>
@@ -171,10 +173,10 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
                 <table class="review_list">
                     <thead>
                     <tr>
-                        <th width="130">글 번호</th>
+                        <th width="200">작성일시</th>
                         <th width="150">작성자</th>
-                        <th width="250">영화 제목</th>
-                        <th width="900">리뷰 제목</th>
+                        <th width="280">영화 제목</th>
+                        <th width="800">리뷰 제목</th>
                         <th width="100">평점</th>
                         <th width="150">추천 수</th>
                         <th width="150">댓글 수</th>
@@ -185,7 +187,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
                         ?>
                         <tbody>
                         <tr>
-                            <td><?php echo $arr['r_seq']; ?></td>
+                            <td><?php echo $arr['r_timestamp']; ?></td>
                             <td><?php echo $arr['u_id']; ?></td>
                             <td><?php echo $arr['m_title']; ?></td>
                             <td><a href='./review.php?r_seq=<?php echo $arr['r_seq'] ?>'><?php echo $arr['r_title']; ?></a></td>

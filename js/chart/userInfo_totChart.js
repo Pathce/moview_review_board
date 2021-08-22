@@ -8,17 +8,17 @@ comment_data = comment_data.replaceAll('"]', '');
 comment_data = Object.entries(JSON.parse(comment_data));
 
 let r_data = [];
-for (let element of review_data) r_data.push({name: element[0], value: element[1]});
+for (let element of review_data) {r_data.push({name: element[0], value: element[1]});}
 if(r_data.length > 5) r_data = r_data.slice(0, 5);
 
 let c_data = [];
-for (let element of comment_data) c_data.push({name: element[0], value: element[1]});
+for (let element of comment_data) {c_data.push({name: element[0], value: element[1]});}
 if(c_data.length > 5) c_data = c_data.slice(0, 5);
 
 const width = 800;
 const height = 400;
 const margin = {top: 40, left: 40, bottom: 40, right: 40};
-
+console.log(r_data);
 // review_________________________________________________________________________________
 const r_x = d3.scaleBand()
     .domain(r_data.map(d => d.name))

@@ -138,6 +138,9 @@ body {
     width: 800px;
     height: 400px;
 }
+.chart_content svg text {
+    font-size: 15px;
+}
 
 /* btn */
 .chart_tabs button {
