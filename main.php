@@ -121,7 +121,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     </div>
     <div class="review_container">
         <div class="review_tabs">
-            <div><h2>최근 리뷰</h2></div>
+            <div><h2>최신 리뷰</h2></div>
             <div id="tab001" class="clicked">
                 <div id="eff1" class="eff-1"></div>
                 <a>인기</a>

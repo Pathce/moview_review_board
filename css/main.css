@@ -144,12 +144,12 @@ body {
     height: 50px;
     border: 70px solid #34495e;
     position: absolute;
-    transition: all .1s ease;
+    /*transition: all .1s ease;*/
     z-index: 1;
     box-sizing: border-box;
 }
 .clicked:hover .eff-1{
-    border: 0px solid #34495e;
+    border: 0px solid #4d5c6b;
 }
 .clicked:hover a{
     color: #34495e;
@@ -181,12 +181,12 @@ body {
     height :50px;
     border: 0px solid #34495e;
     position: absolute;
-    transition: all .1s ease;
+    /*transition: all .1s ease;*/
     z-index: 1;
     box-sizing: border-box;
 }
 .non_clicked:hover .eff-2{
-    border: 70px solid #34495e;
+    border: 70px solid #4d5d6b;
 }
 .non_clicked:hover a{
     color: #fff;
