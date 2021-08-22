@@ -50,7 +50,10 @@ r_svg.append('g')
     .attr('y', d => r_y(d.value))
     .attr('height', d => r_y(0) - r_y(d.value))
     .attr('width', r_x.bandwidth())
-    .attr('fill', (d, i) => {return color[i]});
+    .attr('fill', (d, i) => {
+        let this_color = color[i]
+        return this_color
+    });
 
 r_svg.node();
 
