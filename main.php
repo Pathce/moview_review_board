@@ -203,7 +203,7 @@ $json_date_data = json_encode($dateArray, JSON_UNESCAPED_UNICODE);
     </div>
     <div class="boundary"></div>
     <div class="chart">
-        <a href="stat.php"><button id="btn_tot_chart">종합 통계</button></a>
+        <a class="hidden" href="stat.php"><button id="btn_tot_chart">종합 통계</button></a>
         <div class="date_line_graph">
             <h1>장르별 리뷰 수</h1>
             <div id="review_date_chart"></div>
